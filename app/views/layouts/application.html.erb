@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= @title %></title>
+    <%= render "layouts/stylesheets" %>
+  </head>
+  <body>
+    <div id="border">
+      <div id="banner">
+        <%= link_to banner, root_path %>
+      </div>
+
+      <%= render "layouts/navbar" %>
+
+      <div id="content">
+        <div class="padder" style="padding-left: 15px;">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; clear: both; padding-top: 10px;">
+      <%= render "layouts/footer" %>
+    </div>
+
+
+  </body>
+</html>
