@@ -86,17 +86,15 @@ hr {
 }
 
 #banner {
-  background-color: #999999;
   height: 75px;
+  padding-bottom: 10px;
 }
 
 #content {
-  width: 623px;
+  /* width: 623px; */
+  width: 615px;
   float: right;
   background-color: #fafafa;
-  border-right: 1px #cccccc solid;
-  border-left: 1px #cccccc solid;
-  border-bottom: 1px #cccccc solid;
 }
 
 .padder {
@@ -108,7 +106,6 @@ hr {
   height: 100%;
   width: 150px;
   background-color: #efefef;
-  border-bottom: 1px #cccccc solid;
   font-size: 9pt;
 }
 
@@ -127,6 +124,12 @@ hr {
   font-size: 10pt;
   font-weight: bold;
   color: red;	
+}
+
+.round {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
 }
 
 /**
@@ -163,11 +166,6 @@ ul.navbar {
   list-style: none;
   margin: 0;
   padding: 0;
-  padding-top: 10px;
-  /*
-  padding-left: 1em;
-  text-indent: -1em;
-  */
 }
 
 ul.navbar li a {
@@ -178,6 +176,9 @@ ul.navbar li a {
 
 ul.navbar li a:hover {
   background-color: #cccccc;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
 
