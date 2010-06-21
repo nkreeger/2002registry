@@ -1,2 +1,93 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="highlightContent">
+  <p>
+    <span class="pageTitle">STEP 1:  Create a user account.</span>
+  </p>
+  <p>
+    Please be sure to fill in all the fields correctly, as this will be 
+    the information that you will register your car with.
+  </p>
+</div>
+
+<br/>
+
+<% form_for(@user) do |f| %>
+  <table cellpadding="5" cellspacing="0" class="form_table">
+    <tr>
+      <td colspan="2">
+        <span class="underline">
+          Enter your login information:
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :email, "Email:" %></th>
+      <td><%= f.text_field :email %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :password, "Password:" %></th>
+      <td><%= f.password_field :password, :size => "16" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :password_confirm, "Confirm Password:" %></th>
+      <td><%= f.password_field :password_confirm, :size => "16" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :share_info, "Share my info" %></th>
+      <td>
+        <%= f.check_box :share_info %>
+        <span class="formInfo">
+          ** Shares your email with other 2002 Registry members
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br/>
+  <table cellpadding="5" cellspacing="0" class="form_table">
+    <tr>
+      <td colspan="2">
+        <span class="underline">
+          Enter your contact information:
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :name, "Name:" %></th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :address1, "Address 1:" %></th>
+      <td><%= f.text_field :address1, :size => "25" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :address2, "Address 2:" %></th>
+      <td><%= f.text_field :address2, :size => "25" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :city, "City:" %></th>
+      <td><%= f.text_field :city, :size => "25" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :state, "State:" %></th>
+      <td><%= state_select %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :zip, "ZIP:" %></th>
+      <td><%= f.text_field :zip, :size => "10" %></td>
+    </tr>
+    <tr>
+      <!-- XXX KREEGER: ADD COUNTRY HERE -->
+    </tr>
+  </table>
+  <br/>
+  <div class="highlightContent">
+    <p>
+      Please review all of your USER information to verify that it is correct
+      before pressing the SUBMIT button, which will then ask you to register 
+      your car.
+    </p>
+  </div>
+
+  <p>
+    <%= f.submit "Submit", { :class => "button", :style => "width: 100px" } %>
+  </p>
+<% end %>

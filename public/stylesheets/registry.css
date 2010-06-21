@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 10pt;
-  /* font-family: Verdana; */
+  font-family: Verdana;
 }
 
 #border a {
@@ -51,10 +51,10 @@ hr {
 
 .highlightContent {
   padding: 5px;
-  background-color: #eeeeee;
+/*  background-color: #eeeeee; */
+  background-color: #ddd;
   border: thin dashed #333;
   font-size: 10pt;
-  line-height: 13pt;
 }
 
 #errorDiv {
@@ -116,7 +116,7 @@ hr {
 }
 
 .formInfo {
-  font-size: 10pt;
+  font-size: 9pt;
   font-style: italic;	
 }
 
@@ -157,6 +157,19 @@ input.button_locked {
   background-color: #666666;
   color: #ffffff;
   font-style: italic;
+}
+
+table.form_table {
+  padding-left: 20px;
+}
+
+table.form_table th {
+  font-weight: normal;
+  text-align: left;
+}
+
+table.form_table td {
+  vertical-align: top;
 }
 
 /**
