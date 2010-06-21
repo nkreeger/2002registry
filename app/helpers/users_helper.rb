@@ -2,6 +2,7 @@ module UsersHelper
 
   #
   # XXX KREEGER -> Need to sort the hash here...
+  # XXX KREEGER -> Make this go away...
   #
   def state_select
     states = {

@@ -53,7 +53,7 @@ hr {
   padding: 5px;
 /*  background-color: #eeeeee; */
   background-color: #ddd;
-  border: thin dashed #333;
+  border: 1px solid #999;
   font-size: 10pt;
 }
 

@@ -1,4 +1,4 @@
-<div class="highlightContent">
+<div class="highlightContent round">
   <p>
     <span class="pageTitle">STEP 1:  Create a user account.</span>
   </p>
@@ -68,26 +68,27 @@
     </tr>
     <tr>
       <th><%= f.label :state, "State:" %></th>
-      <td><%= state_select %></td>
+      <td>
+        <select id="user_state" name="user[state]">
+          <%= render "layouts/stateoptions" %>
+        </select>
+      </td>
     </tr>
     <tr>
       <th><%= f.label :zip, "ZIP:" %></th>
       <td><%= f.text_field :zip, :size => "10" %></td>
     </tr>
     <tr>
-      <!-- XXX KREEGER: ADD COUNTRY HERE -->
+      <th><%= f.label :country, "Country: " %></th>
+      <td>
+        <select id="user_country" name="user[country]">
+          <%= render "layouts/countryoptions" %>
+        </select>
+      </td>
     </tr>
   </table>
   <br/>
-  <div class="highlightContent">
-    <p>
-      Please review all of your USER information to verify that it is correct
-      before pressing the SUBMIT button, which will then ask you to register 
-      your car.
-    </p>
-  </div>
-
-  <p>
+  <p style="text-align: center">
     <%= f.submit "Submit", { :class => "button", :style => "width: 100px" } %>
   </p>
 <% end %>
