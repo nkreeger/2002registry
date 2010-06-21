@@ -1,0 +1,46 @@
+# == Schema Info
+#
+# Table name: users
+#
+#  id               :integer         not null, primary key
+#  address1         :string(255)
+#  address2         :string(255)
+#  city             :string(255)
+#  country          :string(255)
+#  email            :string(255)
+#  name             :string(255)
+#  password         :string(255)
+#  password_confirm :string(255)
+#  share_info       :boolean
+#  state            :string(255)
+#  zip              :string(255)
+#  created_at       :datetime
+#  updated_at       :datetime
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  email: MyString
+  address1: MyString
+  address2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  country: MyString
+  password: MyString
+  password_confirm: MyString
+  share_info: false
+
+two:
+  name: MyString
+  email: MyString
+  address1: MyString
+  address2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  country: MyString
+  password: MyString
+  password_confirm: MyString
+  share_info: false
