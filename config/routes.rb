@@ -1,15 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
-
-  # Root mapping
   map.root :controller => "pages", :action => "index"
-
-  # Users Controller routes
-  map.signup   'signup', :controller => "users", :action => "new"
-
-  # Resource mapping
+  map.signup  'signup', :controller => "users", :action => "new"
+  map.signin  'signin',   :controller => 'sessions', :action => 'new'
+  map.signout 'signout',  :controller => 'sessions', :action => 'destroy'
+  
   map.resources :users
+  map.resources :sessions, :only => [:new, :create, :destroy]
 
-  # Default stuff
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
