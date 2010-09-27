@@ -16,11 +16,7 @@ describe SessionsController do
   end
 
   describe "POST create" do
-    before(:each) do
-    end
-
     it "should sign in the user with correct information used" do
-    
       user = mock_model(User, :email => "test@user.org", :password => "foobar")
       User.should_receive(:authenticate).with(
           "test@user.org", "foobar").and_return(user)
@@ -28,11 +24,21 @@ describe SessionsController do
       controller.stub!(:sign_in).with(user).and_return(true)
       controller.stub!(:redirect_back_or).with(user).and_return(true)
 
-      post :create, { :session => { :email => "test@user.org", :password => "foobar" } }
+      post :create, {
+        :session => { :email => "test@user.org", :password => "foobar" }
+      }
       response.should be_success
     end
 
     it "should redirect back to 'sign_in' if the incorrect information is used" do
+      User.should_receive(:authenticate).with(
+          "bad_login@bad.com", "badpass").and_return(nil)
+
+      post :create, {
+        :session => { :email => "bad_login@bad.com", :password => "badpass" }
+      }
+      response.should be_success
+      response.should render_template("sessions/new.html.erb")
     end
   end
 end
