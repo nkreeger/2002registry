@@ -1,25 +1,5 @@
 require "digest"
 
-
-# == Schema Info
-#
-# Table name: users
-#
-#  id               :integer         not null, primary key
-#  address1         :string(255)
-#  address2         :string(255)
-#  city             :string(255)
-#  country          :string(255)
-#  email            :string(255)
-#  name             :string(255)
-#  password         :string(255)
-#  password_confirm :string(255)
-#  share_info       :boolean
-#  state            :string(255)
-#  zip              :string(255)
-#  created_at       :datetime
-#  updated_at       :datetime
-#
 class User < ActiveRecord::Base
   # Attribute getter
   attr_accessor :password
@@ -50,27 +30,19 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
-  #
-  # @brief Check to see if 'submitted_password' mathes the user's password.
-  #
+
   def has_password?(submitted_password)
     # Comapre encrypted_password with the encrypted version of
     # submitted_password.
     encrypted_password == encrypt(submitted_password)
   end
 
-  #
-  # @brief Create a reference to the user in the sessions object.
-  #
   def remember_me
     # XXX KREEGER TO DO
     #self.remember_token = encrypt("#{salt}--#{id}--#{Time.now.utc}")
     #save_without_validation
   end
 
-  #
-  # @brief Return a valid user if the email and password match.
-  #
   def self.authenticate(email, submitted_password)
     user = find_by_email(email)
     return nil if user.nil?
