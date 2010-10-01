@@ -5,24 +5,18 @@
     <%= render "layouts/stylesheets" %>
   </head>
   <body>
-    <div id="border">
-      <div id="banner">
-        <%= link_to banner, root_path %>
-      </div>
+    
+    <div id="container">
 
-      <%= render "layouts/navbar" %>
+      <div id="navbar" class="round">
+        <%= render "layouts/navbar" %>
+      </div>
 
       <div id="content" class="round">
-        <div class="padder" style="padding-left: 15px;">
-          <%= yield %>
-        </div>
+        <%= yield %>
       </div>
+      
     </div>
-
-    <div style="text-align: center; clear: both; padding-top: 10px;">
-      <%= render "layouts/footer" %>
-    </div>
-
 
   </body>
 </html>

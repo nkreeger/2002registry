@@ -1,12 +1,9 @@
-<div id="toolbar" class="round">
-  <div class="padder">
-    <ul class="navbar">
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Create Account", signup_path %></li>
-      <li><%= link_to "View Pictures", "#" %></li>
-      <li><%= link_to "Car Statistics", "#" %></li>
-      <li><%= link_to "About", "#" %></li>
-      <li><%= link_to "Privacy", "#" %></li>
-    </ul>
-  </div>
+<div class="app_menu">
+  <ul>
+    <li><%= link_to "Home", root_path, :class => "round" %></li>
+  </ul>
+  <ul class="account_status">
+    <li><%= link_to "Sign in", signin_path, :class => "round" %></li>
+    <li><%= link_to "Create Account", signup_path, :class => "round" %></li>
+  </ul>
 </div>

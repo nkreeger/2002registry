@@ -1,0 +1,305 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 10pt;
+  font-family: Verdana;
+}
+
+#border a {
+	color: blue;
+  /* color: #FF6600; */
+}
+
+#border a:hover {
+  color: #222222;
+  background-color: #cccccc;
+}
+
+a img {
+  border: none;
+}
+
+img.border {
+  border: 1px #aaaaaa solid;
+}
+
+hr {
+  color: #cccccc;
+  height: 2px;
+}
+
+.underline {
+  text-decoration: underline;	
+}
+
+.hidden {
+  display: none;
+  visibility: collapse;	
+}
+
+.visible {
+  visibility: visible;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/**
+ * Page DIVS
+ */
+
+.highlightContent {
+  padding: 5px;
+/*  background-color: #eeeeee; */
+  background-color: #ddd;
+  border: 1px solid #999;
+  font-size: 10pt;
+}
+
+#errorDiv {
+  padding: 5px;
+  background-color: #dcdcdc;
+  border: thin dashed red;
+  font-size: 11pt;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+#errorDiv p {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.highlightContent p {
+  padding-left: 10px;
+  padding-right: 10px;	
+}
+
+#border {
+  width: 775px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+}
+
+#banner {
+  height: 75px;
+  padding-bottom: 10px;
+}
+
+#content {
+  /* width: 623px; */
+  width: 615px;
+  float: right;
+  background-color: #efefef;
+}
+
+.padder {
+  padding: 10px;
+}
+
+#toolbar {
+  float: left;
+  height: 100%;
+  width: 150px;
+  background-color: #efefef;
+  font-size: 9pt;
+}
+
+.pageTitle {
+  font-weight: bold;
+  font-size: 12pt;
+  text-decoration: underline;
+}
+
+.formInfo {
+  font-size: 9pt;
+  font-style: italic;	
+}
+
+.feedback_error {
+  font-size: 10pt;
+  font-weight: bold;
+  color: red;	
+}
+
+.round {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/**
+ * Form CSS
+ */
+input {
+  font-size: 10pt;
+  background: #FFF8C6;
+  border: 1px solid #999999;
+  padding: 3px;
+}
+
+input.button {
+  margin-top: 5px;
+  background-color: #cccccc;
+}
+
+input.button_small {
+  margin-top: 5px;
+  font-size: 8pt;
+  background-color: #eeeeee;	
+}
+
+input.button_locked {
+  background-color: #666666;
+  color: #ffffff;
+  font-style: italic;
+}
+
+table.form_table {
+  padding-left: 20px;
+}
+
+table.form_table th {
+  font-weight: normal;
+  text-align: left;
+}
+
+table.form_table td {
+  vertical-align: top;
+}
+
+/**
+ * Navbar Stuff
+ */
+ul.navbar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.navbar li a {
+  text-decoration: none;
+  padding: 5px;
+  display: block;
+}
+
+ul.navbar li a:hover {
+  background-color: #cccccc;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+
+/**
+ * Main Page CSS
+ */
+#left_col {
+  width: 180px;
+  float: left;
+}
+
+#right_col {
+  float: right;
+  width: 400px;
+}
+
+#home_header {
+  background-color: #cccccc;
+  font-size: 8pt;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px #888888 solid;
+}
+
+#home_header p {
+  color: #444444;
+  padding: 5px;
+  padding-bottom: 4px;
+  margin: 0;
+  padding-left: 10px;
+  font-size: 8pt;
+}
+
+table.user_info {
+  padding-left: 10px;
+}
+
+table.user_info th {
+  color: #999999;
+  font-weight: normal;
+  vertical-align: top;
+  text-align: left;
+}
+
+table.user_info td {
+  font-weight: normal;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+table.user_messages {
+  font-size: 8pt;
+  padding-left: 10px;
+  width: 100%;
+}
+
+table.user_messages th {
+  color: #999999;
+  text-decoration: underline;
+  font-weight: normal;
+  vertical-align: top;
+  text-align: left;
+  padding-bottom: 5px;
+}
+
+table.user_messages td {
+  font-weight: normal;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+table.cars_table {
+  width: 100%;
+}
+
+table.cars_table td {
+  vertical-align: top;
+  background-color: #dedede;
+}
+
+table.cars_table td.over {
+  background-color: #cccccc; 
+}
+
+#user_car {
+  text-align: center;
+  font-size: 10pt;
+  padding: 5px;
+}
+
+p.user_home {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 0px;
+  padding-left: 10px;
+  text-align: right;
+}
+
+/**
+ * Car page
+ */
+
+img.car_thumb {
+  max-width: 180px;
+}
+
+#cars_thumb_gallery img.car_thumb {
+  max-width: 170px;
+}
+
+
