@@ -1,97 +1,58 @@
-
 <div class="section">
   <h2>Create a 2002registry User Account</h2>
   <p>
     Please be sure to fill in all the fields correctly, as this will be 
     the information that you will register your car with.
   </p>
+  <% form_for(@user) do |f| %>
+    <%= f.error_messages %>
+    <div class="field">
+      <%= f.label :email, "Email:" %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password, "Password:" %>
+      <%= f.password_field :password, :size => "16" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirm, "Confirm Password:" %>
+      <%= f.password_field :password_confirm, :size => "16" %>
+    </div>
+    <br/>
+    <div class="field">
+      <%= f.label :name, "Name:" %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :address1, "Address 1:" %>
+      <%= f.text_field :address1, :size => "25" %>
+   </div>
+   <div class="field">
+     <%= f.label :address2, "Address 2:" %>
+     <%= f.text_field :address2, :size => "25" %>
+   </div>
+   <div class="field">
+     <%= f.label :city, "City:" %>
+     <%= f.text_field :city, :size => "25" %>
+   </div>
+   <div class="field">
+     <%= f.label :state, "State:" %>
+     <select id="user_state" name="user[state]">
+       <%= render "layouts/stateoptions" %>
+     </select>
+   </div>
+   <div class="field">
+     <%= f.label :zip, "ZIP:" %>
+     <%= f.text_field :zip, :size => "10" %>
+   </div>
+   <div class="field">
+     <%= f.label :country, "Country: " %>
+     <select id="user_country" name="user[country]">
+       <%= render "layouts/countryoptions" %>
+     </select>
+   </div>
+    <div class="field">
+      <%= f.submit "Submit", :class => "round" %>
+    </div>
+  <% end %>
 </div>
-
-
-<!-- OLD SHIT: -->
-<br/>
-
-<% form_for(@user) do |f| %>
-  <%= f.error_messages %>
-
-  <table cellpadding="5" cellspacing="0" class="form_table">
-    <tr>
-      <td colspan="2">
-        <span class="underline">
-          Enter your login information:
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <th><%= f.label :email, "Email:" %></th>
-      <td><%= f.text_field :email %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :password, "Password:" %></th>
-      <td><%= f.password_field :password, :size => "16" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :password_confirm, "Confirm Password:" %></th>
-      <td><%= f.password_field :password_confirm, :size => "16" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :share_info, "Share my info" %></th>
-      <td>
-        <%= f.check_box :share_info %>
-        <span class="formInfo">
-          ** Shares your email with other 2002 Registry members
-        </span>
-      </td>
-    </tr>
-  </table>
-  <br/>
-  <table cellpadding="5" cellspacing="0" class="form_table">
-    <tr>
-      <td colspan="2">
-        <span class="underline">
-          Enter your contact information:
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <th><%= f.label :name, "Name:" %></th>
-      <td><%= f.text_field :name %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :address1, "Address 1:" %></th>
-      <td><%= f.text_field :address1, :size => "25" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :address2, "Address 2:" %></th>
-      <td><%= f.text_field :address2, :size => "25" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :city, "City:" %></th>
-      <td><%= f.text_field :city, :size => "25" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :state, "State:" %></th>
-      <td>
-        <select id="user_state" name="user[state]">
-          <%= render "layouts/stateoptions" %>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <th><%= f.label :zip, "ZIP:" %></th>
-      <td><%= f.text_field :zip, :size => "10" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :country, "Country: " %></th>
-      <td>
-        <select id="user_country" name="user[country]">
-          <%= render "layouts/countryoptions" %>
-        </select>
-      </td>
-    </tr>
-  </table>
-  <br/>
-  <p style="text-align: center">
-    <%= f.submit "Submit", { :class => "button", :style => "width: 100px" } %>
-  </p>
-<% end %>

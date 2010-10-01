@@ -74,6 +74,36 @@ body, html {
   font-weight: bold;
 }
 
+.section p {
+  margin: 6px 0;
+}
+
+/** Field **/
+
+.field {
+  margin: 4px 10px;
+}
+
+.field label {
+  width: 120px;
+  display: inline-block;
+}
+
+.field input[type="button"],
+.field input[type="submit"] {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 4px 15px;
+  color: #fff;
+  cursor: pointer;  
+  margin: 0;
+}
+
+.field input[type="button"]:hover,
+.field input[type="submit"]:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 /** General **/
 
 .inline {
