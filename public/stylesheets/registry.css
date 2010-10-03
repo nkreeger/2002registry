@@ -55,6 +55,35 @@ body, html {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.signin_layer .field label {
+  width: 50px;
+}
+
+.signin_layer .field input[type="submit"] {
+  background-color: #ccc;
+  color: #000;
+}
+
+.signin_layer .field input[type="submit"]:hover {
+  color: #fff;
+}
+
+/** Hovermenu **/
+
+.hovertarget {
+  cursor: pointer;
+}
+
+.hovermenu {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  color: #fff;
+  text-align: left;
+  z-index: 100;
+  display: none;
+}
+
 /** Main Content **/
 
 #content {
@@ -108,6 +137,14 @@ body, html {
 
 .inline {
   display: inline-block;
+}
+
+.text_left {
+  text-align: left;  
+}
+
+.text_right {
+  text-align: right;
 }
 
 .round {

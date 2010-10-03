@@ -3,7 +3,27 @@
     <li><%= link_to "Home", root_path, :class => "round" %></li>
   </ul>
   <ul class="account_status">
-    <li><%= link_to "Sign in", signin_path, :class => "round" %></li>
+    <li><a class="hovertarget signin_target round">Sign in</a></li>
     <li><%= link_to "Create Account", signup_path, :class => "round" %></li>
   </ul>
 </div>
+
+<div class="hovermenu signin_layer round">
+  <div class="field">
+    <label>User:</label>
+    <input type="text" />
+  </div>
+  <div class="field">
+    <label>Pass:</label>
+    <input type="password" />
+  </div>
+  <div class="field text_right">
+    <input type="submit" value="Sign In" />
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $(".signin_target").menuPopup(".signin_layer");
+  });
+</script>
