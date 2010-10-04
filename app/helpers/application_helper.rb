@@ -14,7 +14,6 @@ module ApplicationHelper
     image_tag("banner.jpg", :alt => "BWM 2002 Registry", :class => "round")
   end
 
-
   def javascript_files
     files = []
     if Rails.env.development?
@@ -28,6 +27,5 @@ module ApplicationHelper
     files += ["menu_popup"]
     files
   end
-
 
 end
