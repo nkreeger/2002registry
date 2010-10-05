@@ -30,7 +30,6 @@ module Scripts
         }
         
         p Model.create!(attrs)
-  
       end
     end
     
