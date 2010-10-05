@@ -18,8 +18,7 @@ describe SessionsController do
   describe "POST create" do
     it "should sign in the user with correct information used" do
       user = mock_model(User, :email => "test@user.org", :password => "foobar")
-      User.should_receive(:authenticate).with(
-          "test@user.org", "foobar").and_return(user)
+      User.should_receive(:authenticate).with("test@user.org", "foobar").and_return(user)
 
       controller.stub!(:sign_in).with(user).and_return(true)
       controller.stub!(:redirect_back_or).with(user).and_return(true)
