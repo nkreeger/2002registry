@@ -9,7 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101005042948) do
+ActiveRecord::Schema.define(:version => 20101005063853) do
+
+  create_table "models", :force => true do |t|
+    t.integer  "model_id"
+    t.string   "name"
+    t.integer  "number"
+    t.datetime "production_begin"
+    t.datetime "production_end"
+    t.integer  "code"
+    t.integer  "total_production_count"
+    t.integer  "cylinder_count"
+    t.integer  "displacement"
+    t.string   "drive"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
