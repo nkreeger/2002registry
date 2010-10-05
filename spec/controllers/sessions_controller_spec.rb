@@ -27,7 +27,7 @@ describe SessionsController do
       post :create, {
         :session => { :email => "test@user.org", :password => "foobar" }
       }
-      response.should be_success
+      response.should redirect_to(user_path(user))
     end
 
     it "should redirect back to 'sign_in' if the incorrect information is used" do
@@ -39,6 +39,15 @@ describe SessionsController do
       }
       response.should be_success
       response.should render_template("sessions/new.html.erb")
+    end
+  end
+  
+  describe "DELETE destory" do
+    it "should log the user out when called" do
+      delete :destroy
+    
+      controller.stub!(:sign_out).and_return(true)
+      controller.stub!(:redirect_to).with(root_path).and_return(true)
     end
   end
 end

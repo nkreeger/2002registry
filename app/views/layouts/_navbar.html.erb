@@ -1,25 +1,35 @@
 <div class="app_menu">
   <ul>
-    <li><%= link_to "Home", root_path, :class => "round" %></li>
+  <% if signed_in? %>
+    <li><%= link_to "Home", user_path(current_user), :class => "round" %></li>
+  <% else %>
+    <li><%= link_to "Home", root_path, :class => "round" %></li>  <% end %>
   </ul>
   <ul class="account_status">
+  <% if signed_in? %>
+    <li><%= h(current_user.name) %></li>
+    <li><%= link_to "Sign Out", signout_path, :class => "round" %></li>
+  <% else %>
     <li><a class="hovertarget signin_target round">Sign in</a></li>
     <li><%= link_to "Create Account", signup_path, :class => "round" %></li>
+  <% end%>
   </ul>
 </div>
 
 <div class="hovermenu signin_layer round">
-  <div class="field">
-    <label>User:</label>
-    <input type="text" />
-  </div>
-  <div class="field">
-    <label>Pass:</label>
-    <input type="password" />
-  </div>
-  <div class="field text_right">
-    <input type="submit" value="Sign In" />
-  </div>
+  <% form_for(:session, :url => sessions_path) do |f| %>
+    <div class="field">
+      <%= f.label :email, "Email:" %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password, "Password:" %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field text_right">
+      <%= f.submit "Sign In" %>
+    </div>
+  <% end %>
 </div>
 
 <script type="text/javascript">

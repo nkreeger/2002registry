@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signin  'signin',   :controller => 'sessions', :action => 'new'
   map.signout 'signout',  :controller => 'sessions', :action => 'destroy'
   
-  map.resources :users
+  map.resources :users, :only => [:new, :show]
   map.resources :sessions, :only => [:new, :create, :destroy]
 
   map.connect ':controller/:action/:id'
