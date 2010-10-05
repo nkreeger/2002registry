@@ -15,3 +15,7 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+
+config.to_prepare do
+  Scripts::ProcessModelSQL.registry_sql_data_file = "/Users/nickkreeger/workspace/2002registry/doc/model_sql.txt"
+end
