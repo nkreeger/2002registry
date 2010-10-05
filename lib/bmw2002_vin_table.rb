@@ -1,8 +1,11 @@
 class BMW2002VinTable
   
+  ##
+  # Lookup a Model entry for a given VIN number
+  ##
   def self.lookup_model(vin)
-    model_id = 68 # Hack for now
-    
+    model_id = -1
+  
     case vin
     when 4150001 .. 4200000
       model_id = 1
@@ -146,8 +149,6 @@ class BMW2002VinTable
       model_id = 70
     when 2780001 .. 2782928
       model_id = 71
-    else
-      model_id = -1
     end
     
     if model_id > 0
@@ -156,6 +157,5 @@ class BMW2002VinTable
       nil
     end
   end
-  
   
 end
