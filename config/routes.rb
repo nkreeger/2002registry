@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :only => [:new, :create, :show]
   map.resources :sessions, :only => [:new, :create, :destroy]
   map.resources :vins, :only => [:show]
+  map.resources :cars, :only => [:new]
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

@@ -45,7 +45,6 @@
         popupMenuElement.css("left", popupMenuLink.offset().left + "px");
       }
 
-      console.log(" -- Setting top: " + popupMenuLink.offset().top + popupMenuLink.height() + 10 + "px");
       popupMenuElement.css("top", popupMenuLink.offset().top + popupMenuLink.height() + 10 + "px");
     }
   };
