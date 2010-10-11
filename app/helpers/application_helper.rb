@@ -24,7 +24,7 @@ module ApplicationHelper
                 "vendor/jquery.hoverIntent.min.js"]
     end
     
-    files += ["menu_popup"]
+    files += ["application", "menu_popup"]
     files
   end
 
