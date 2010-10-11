@@ -27,4 +27,8 @@ config.action_mailer.delivery_method = :test
 # like if you have constraints or database-specific column types
 # config.active_record.schema_format = :sql
 
+config.to_prepare do
+  Scripts::ProcessModelSQL.registry_sql_data_file = "/Users/nickkreeger/workspace/2002registry/doc/model_sql.txt"
+end
+
   config.gem 'rspec-rails', :version => '>= 1.3.2', :lib => false unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))

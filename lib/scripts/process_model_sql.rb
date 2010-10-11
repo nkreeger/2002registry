@@ -4,8 +4,11 @@ module Scripts
   class ProcessModelSQL
     cattr_accessor :registry_sql_data_file
     
-    def initialize
+    def initialize(log = false)
+      @log = log
     end
+
+    attr_reader :log
     
     def run
       string = ""
@@ -28,8 +31,9 @@ module Scripts
           :displacement => values[8].strip,
           :drive => values[9].strip.gsub(/[();']/, "")
         }
-        
-        p Model.create!(attrs)
+
+        model = Model.create!(attrs)
+        p model unless !log 
       end
     end
     
