@@ -6,8 +6,8 @@
   <div class="current-step" rel="1" />
   <div class="step_1">
     <div class="field">
-      <input type="text" class="vin-textbox" />
-      <input type="button" value="Submit Vin" class="next-step-button" />
+      <input type="text" class="vin-textbox" size="7" />
+      <input type="button" value="Submit Vin" class="next-step-button round" />
     </div>
   </div>
   <div class="step_2">
@@ -22,7 +22,7 @@
     <div class="field">
       <label>Year</label>
       <input type="text" class="year-textbox" size="4" />
-      <input type="button" value="Guess Year" class="guess-year-button" />
+      <input type="button" value="Guess Year" class="guess-year-button round" />
     </div>
     <div class="field">
       <label>Color</label>
@@ -33,6 +33,9 @@
     <div class="field">
       <label>Is Alive?</label>
       <input type="checkbox" name="is_alive" checked="checked" />
+    </div>
+    <div class="field">
+      <input type="button" value="Continue" class="next-step-button round" />
     </div>
   </div>
   <div class="step_3">
@@ -56,6 +59,7 @@
             if (data["success"]) {
               $(".step_1").css("display", "none");
               $(".step_2").css("display", "block");
+              $(".current-step").attr("rel", "2");
 
               var model = data.result.model;
               $(".model-name-entry").html(model.name);
@@ -67,8 +71,23 @@
           });
 
           break;
+
         case "2":
+          // Validate form data?
+          $(".step_2").css("display", "none");
+          $(".step_3").css("display", "block");
+          $(".current-step").attr("rel", "3");
           break;
+          
+        case "3":
+          $(".step_3").css("display", "none");
+          $(".step_4").css("display", "block");
+          $(".current-step").attr("rel", "4");
+          break;
+          
+        case "4":
+          // Uhoh! Need to finally submit the form data!
+          
         default:
           alert("Something went wrong!");
       }
