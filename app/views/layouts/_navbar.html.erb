@@ -2,6 +2,7 @@
   <ul>
   <% if signed_in? %>
     <li><%= link_to "Home", user_path(current_user), :class => "round" %></li>
+    <li><%= link_to "Register Car", new_car_path, :class => "round" %></li>
   <% else %>
     <li><%= link_to "Home", root_path, :class => "round" %></li>  <% end %>
   </ul>

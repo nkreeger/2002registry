@@ -1,16 +1,15 @@
 <div class="section">
   <h2>Register a car</h2>
-  <p>
-    Enter your vin number to continue.
-  </p>
   <div class="current-step" rel="1" />
   <div class="step_1">
+    <h3>VIN Lookup</h3>
     <div class="field">
       <input type="text" class="vin-textbox" size="7" />
       <input type="button" value="Submit Vin" class="next-step-button round" />
     </div>
   </div>
-  <div class="step_2">
+  <div class="step_2 hidden">
+    <h3>Car Information</h3>
     <div class="field">
       <label>Model Name:</label>
       <span class="model-name-entry hard-value"></span>
@@ -38,11 +37,19 @@
       <input type="button" value="Continue" class="next-step-button round" />
     </div>
   </div>
-  <div class="step_3">
+  <div class="step_3 hidden">
+    <h3>Car Location</h3>
     <!-- Location settings here! -->
+    <div class="field">
+      <input type="button" value="Continue" class="next-step-button round" />
+    </div>
   </div>
-  <div class="step_4">
+  <div class="step_4 hidden">
+    <h3>Picture Upload</h3>
     <!-- Picture Upload Here! -->
+    <div class="field">
+      <input type="button" value="Continue" class="next-step-button round" />
+    </div>
   </div>
 </div>
 
@@ -57,8 +64,8 @@
           // XXX Do something load-ey.
           $.get("/vins/" + $(".vin-textbox").val(), function(data) {
             if (data["success"]) {
-              $(".step_1").css("display", "none");
-              $(".step_2").css("display", "block");
+              $(".step_1").addClass("hidden");
+              $(".step_2").removeClass("hidden");
               $(".current-step").attr("rel", "2");
 
               var model = data.result.model;
@@ -74,17 +81,17 @@
 
         case "2":
           // Validate form data?
-          $(".step_2").css("display", "none");
-          $(".step_3").css("display", "block");
+          $(".step_2").addClass("hidden");
+          $(".step_3").removeClass("hidden");
           $(".current-step").attr("rel", "3");
           break;
-          
+
         case "3":
-          $(".step_3").css("display", "none");
-          $(".step_4").css("display", "block");
+          $(".step_3").addClass("hidden");
+          $(".step_4").removeClass("hidden");
           $(".current-step").attr("rel", "4");
           break;
-          
+
         case "4":
           // Uhoh! Need to finally submit the form data!
           
@@ -111,10 +118,9 @@
 </script>
 
 <style type="text/css">
-  .step_1 {
-  }
 
-  .step_2 {
+  .hidden {
     display: none;
   }
+
 </style>
