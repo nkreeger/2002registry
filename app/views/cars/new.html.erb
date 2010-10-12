@@ -42,11 +42,18 @@
       <h3>Car Location</h3>
       <!-- Location settings here! -->
       <div class="field">
-        <label>Use my current location</label>
+        <label>Use my current location:</label>
+        <span class="location-field"></span>
         <input type="button" value="Lookup Location" class="location-lookup-button round" />
       </div>
-      <div>
-        <span class="location-field"></span>
+      <div class="field">
+        <label>Pick car's location:</label>
+        <select name="car[location_country_code]">
+          <%= render "layouts/countryoptions" %>
+        </select>
+        <select name="car[location_state]" disabled="true">
+          <!-- TODO: Get a list of states based on selected country_code -->
+        </select>
       </div>
       <div class="field">
         <input type="button" value="Continue" class="next-step-button round" />
@@ -124,6 +131,12 @@
         else {
           // XXX Do something with errors here.
         }
+      });
+    });
+    
+    $(".location-lookup-button").click(function() {
+      $.get("/locations/lookup", function(data) {
+        console.log(data);
       });
     });
   })(jQuery);
