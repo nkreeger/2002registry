@@ -3,21 +3,99 @@
   <p>
     Enter your vin number to continue.
   </p>
+  <div class="current-step" rel="1" />
   <div class="step_1">
     <div class="field">
       <input type="text" class="vin-textbox" />
-      <input type="button" value="Submit Vin" class="vin-lookup-button" />
+      <input type="button" value="Submit Vin" class="next-step-button" />
     </div>
+  </div>
+  <div class="step_2">
+    <div class="field">
+      <label>Model Name:</label>
+      <span class="model-name-entry hard-value"></span>
+    </div>
+    <div class="field">
+      <label>Model Number:</label>
+      <span class="model-number-entry hard-value"></span>
+    </div>
+    <div class="field">
+      <label>Year</label>
+      <input type="text" class="year-textbox" size="4" />
+      <input type="button" value="Guess Year" class="guess-year-button" />
+    </div>
+    <div class="field">
+      <label>Color</label>
+      <select name="color">
+        <%= render "layouts/coloroptions" %>
+      </select>
+    </div>
+    <div class="field">
+      <label>Is Alive?</label>
+      <input type="checkbox" name="is_alive" checked="checked" />
+    </div>
+  </div>
+  <div class="step_3">
+    <!-- Location settings here! -->
+  </div>
+  <div class="step_4">
+    <!-- Picture Upload Here! -->
   </div>
 </div>
 
 <script type="text/javascript">
   (function($) {
-    $(".vin-lookup-button").click(function() {
-      // XXX Show some sort of loading thing.
-      $.get("/vins/" + $(".vin-textbox").val(), function(data) {
-        console.log(data);
+
+    $.fn.nextStep = function() {
+      // Determine what step to do next.
+      var curStep = $(".current-step").attr("rel");
+      switch (curStep) {
+        case "1":      
+          // XXX Do something load-ey.
+          $.get("/vins/" + $(".vin-textbox").val(), function(data) {
+            if (data["success"]) {
+              $(".step_1").css("display", "none");
+              $(".step_2").css("display", "block");
+
+              var model = data.result.model;
+              $(".model-name-entry").html(model.name);
+              $(".model-number-entry").html(model.number)
+            }
+            else {
+              // XXX Do something with errors here.
+            }
+          });
+
+          break;
+        case "2":
+          break;
+        default:
+          alert("Something went wrong!");
+      }
+    },
+
+    $(".next-step-button").click(function() {
+      $(this).nextStep();
+    });
+
+    $(".guess-year-button").click(function() {
+      $.get("/vins/" + $(".vin-textbox").val() + "/guess_year", function(data) {
+        if (data["success"]) {
+          $(".year-textbox").val(data.year);
+        }
+        else {
+          // XXX Do something with errors here.
+        }
       });
     });
   })(jQuery);
 </script>
+
+<style type="text/css">
+  .step_1 {
+  }
+
+  .step_2 {
+    display: none;
+  }
+</style>

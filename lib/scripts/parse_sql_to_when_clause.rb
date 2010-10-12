@@ -74,4 +74,5 @@ str.split("\n").reverse.each do |input|
   values = input.strip.split(',')
   puts "when #{values[1].strip} .. #{values[2].strip}"
   puts "  model_id = #{values[0].strip.gsub("(", "")}"
+  puts "  variance = (vin - #{values[1].strip}) / (#{values[2].strip} - #{values[1].strip}).to_f"
 end
