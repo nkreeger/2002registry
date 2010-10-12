@@ -54,7 +54,10 @@
     </div>
     <div class="step_4 hidden">
       <h3>Picture Upload</h3>
-      <!-- Picture Upload Here! -->
+      <div class="field">
+        <%= f.label :image %>
+        <%= f.file_field :image, :size => 16 %>
+      </div>
       <div class="field">
         <input type="button" value="Continue" class="next-step-button round" />
       </div>
