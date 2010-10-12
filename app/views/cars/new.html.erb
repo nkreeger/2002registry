@@ -1,63 +1,65 @@
 <div class="section">
   <h2>Register a car</h2>
-  <div class="current-step" rel="1" />
-  <div class="step_1">
-    <h3>VIN Lookup</h3>
-    <div class="field">
-      <input type="text" class="vin-textbox" size="7" />
-      <input type="button" value="Submit Vin" class="next-step-button round" />
+  <% form_for @car, :html => { :multipart => true} do |f| %>
+    <div class="current-step" rel="1" />
+    <div class="step_1">
+      <h3>VIN Lookup</h3>
+      <div class="field">
+        <%= f.text_field :vin, :size => 7, :class=> "vin-textbox" %>
+        <input type="button" value="Submit Vin" class="next-step-button round" />
+      </div>
     </div>
-  </div>
-  <div class="step_2 hidden">
-    <h3>Car Information</h3>
-    <div class="field">
-      <label>Model Name:</label>
-      <span class="model-name-entry hard-value"></span>
+    <div class="step_2 hidden">
+      <h3>Car Information</h3>
+      <div class="field">
+        <label>Model Name:</label>
+        <span class="model-name-entry hard-value"></span>
+      </div>
+      <div class="field">
+        <label>Model Number:</label>
+        <span class="model-number-entry hard-value"></span>
+      </div>
+      <div class="field">
+        <label>Year</label>
+        <%= f.text_field :claimed_year, :size => 4, :class => "year-textbox" %>
+        <input type="button" value="Guess Year" class="guess-year-button round" />
+      </div>
+      <div class="field">
+        <label>Color</label>
+        <select name="car[color]">
+          <%= render "layouts/coloroptions" %>
+        </select>
+      </div>
+      <div class="field">
+        <label>Is Alive?</label>
+        <%= f.check_box :is_alive, :checked => "checked" %>
+      </div>
+      <div class="field">
+        <input type="button" value="Continue" class="next-step-button round" />
+      </div>
     </div>
-    <div class="field">
-      <label>Model Number:</label>
-      <span class="model-number-entry hard-value"></span>
+    <div class="step_3 hidden">
+      <h3>Car Location</h3>
+      <!-- Location settings here! -->
+      <div class="field">
+        <label>Use my current location</label>
+        <input type="button" value="Lookup Location" class="location-lookup-button round" />
+      </div>
+      <div>
+        <span class="location-field"></span>
+      </div>
+      <div class="field">
+        <input type="button" value="Continue" class="next-step-button round" />
+      </div>
     </div>
-    <div class="field">
-      <label>Year</label>
-      <input type="text" class="year-textbox" size="4" />
-      <input type="button" value="Guess Year" class="guess-year-button round" />
+    <div class="step_4 hidden">
+      <h3>Picture Upload</h3>
+      <!-- Picture Upload Here! -->
+      <div class="field">
+        <input type="button" value="Continue" class="next-step-button round" />
+      </div>
     </div>
-    <div class="field">
-      <label>Color</label>
-      <select name="color">
-        <%= render "layouts/coloroptions" %>
-      </select>
-    </div>
-    <div class="field">
-      <label>Is Alive?</label>
-      <input type="checkbox" name="is_alive" checked="checked" />
-    </div>
-    <div class="field">
-      <input type="button" value="Continue" class="next-step-button round" />
-    </div>
-  </div>
-  <div class="step_3 hidden">
-    <h3>Car Location</h3>
-    <!-- Location settings here! -->
-    <div class="field">
-      <label>Use my current location</label>
-      <input type="button" value="Lookup Location" class="location-lookup-button round" />
-    </div>
-    <div>
-      <span class="location-field"></span>
-    </div>
-    <div class="field">
-      <input type="button" value="Continue" class="next-step-button round" />
-    </div>
-  </div>
-  <div class="step_4 hidden">
-    <h3>Picture Upload</h3>
-    <!-- Picture Upload Here! -->
-    <div class="field">
-      <input type="button" value="Continue" class="next-step-button round" />
-    </div>
-  </div>
+  <% end %>
 </div>
 
 <script type="text/javascript">

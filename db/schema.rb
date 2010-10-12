@@ -9,7 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101005063853) do
+ActiveRecord::Schema.define(:version => 20101012062658) do
+
+  create_table "cars", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "vin"
+    t.integer  "model_id"
+    t.integer  "claimed_year"
+    t.string   "color"
+    t.boolean  "is_alive"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "cars", ["model_id"], :name => "index_cars_on_model_id"
+  add_index "cars", ["user_id"], :name => "index_cars_on_user_id"
 
   create_table "models", :force => true do |t|
     t.integer  "model_id"
