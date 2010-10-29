@@ -21,6 +21,7 @@ body, html {
   padding: 8px;
   clear: both;
   text-align: left;
+  border: 1px solid #999;
 }
 
 #navbar .account_status {
@@ -84,12 +85,43 @@ body, html {
   display: none;
 }
 
+/** Flash bar **/
+
+.flash {
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.flash.notice {
+  background-color: #ccffbb;
+  border: 1px solid green;
+}
+
+.flash.error {
+  background-color: pink;
+  border: 1px solid red;
+}
+
+/** Buttons **/
+
+.button.close {
+  float: right;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.button.close:hover {
+  color: red;
+}
+
+
 /** Main Content **/
 
 #content {
   margin: 10px 0;
   padding: 10px;
   background-color: #ccc;
+  border: 1px solid #999;
   text-align: left;
 }
 
@@ -107,10 +139,23 @@ body, html {
   margin: 6px 0;
 }
 
+/** Step **/
+
+.step {
+  padding: 20px;
+}
+
+.step h3 {
+  font-size: 11pt;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
 /** Field **/
 
 .field {
-  margin: 4px 10px;
+  padding: 10px;
+  background-color: #bbb;
 }
 
 .field label {

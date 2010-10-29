@@ -13,11 +13,31 @@
         <%= render "layouts/navbar" %>
       </div>
 
+      <% unless flash[:notice].blank? %>
+        <div class="flash notice round">
+          <%= h(flash[:notice]) %>
+          <span class="button close">X</span>
+        </div>
+      <% end %>
+      <% unless flash[:error].blank? %>      
+        <div class="flash error round">
+          <%= h(flash[:notice]) %>
+          <span class="button close">X</span>
+        </div>
+      <% end %>
+
       <div id="content" class="round">
         <%= yield %>
       </div>
       
     </div>
 
+  <script type="text/javascript">
+    $(function() {
+      $(".button.close").click(function() {
+        $(this).parent().fadeOut("fast");
+      })
+    });
+  </script>
   </body>
 </html>

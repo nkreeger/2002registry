@@ -2,14 +2,14 @@
   <h2>Register a car</h2>
   <% form_for @car, :html => { :multipart => true} do |f| %>
     <div class="current-step" rel="1" />
-    <div class="step_1">
+    <div class="step one">
       <h3>VIN Lookup</h3>
       <div class="field">
         <%= f.text_field :vin, :size => 7, :class=> "vin-textbox" %>
         <input type="button" value="Submit Vin" class="next-step-button round" />
       </div>
     </div>
-    <div class="step_2 hidden">
+    <div class="step two hidden">
       <h3>Car Information</h3>
       <div class="field">
         <label>Model Name:</label>
@@ -38,7 +38,7 @@
         <input type="button" value="Continue" class="next-step-button round" />
       </div>
     </div>
-    <div class="step_3 hidden">
+    <div class="step three hidden">
       <h3>Car Location</h3>
       <!-- Location settings here! -->
       <div class="field">
@@ -48,18 +48,19 @@
       </div>
       <div class="field">
         <label>Pick car's location:</label>
-        <select name="car[location_country_code]">
+        <select class="select-country" name="car[location_country_code]">
           <%= render "layouts/countryoptions" %>
         </select>
-        <select name="car[location_state]" disabled="true">
-          <!-- TODO: Get a list of states based on selected country_code -->
+        <select class="select-state" name="car[location_state]" disabled="true">
+          <%= render "layouts/stateoptions" %>
         </select>
+        <%= f.text_field :location_state, :size => 20, :class => "hidden state-textbox" %>
       </div>
       <div class="field">
         <input type="button" value="Continue" class="next-step-button round" />
       </div>
     </div>
-    <div class="step_4 hidden">
+    <div class="step four hidden">
       <h3>Picture Upload</h3>
       <div class="field">
         <%= f.label :image %>
@@ -74,7 +75,12 @@
 
 <script type="text/javascript">
   (function($) {
-
+    // Clear out form values each time
+    $(':input', '#new_car').not(":button, :submit, :reset, :hidden")
+                           .val('')
+                           .removeAttr('checked')
+                           .removeAttr('selected');
+    
     $.fn.nextStep = function() {
       // Determine what step to do next.
       var curStep = $(".current-step").attr("rel");
@@ -83,8 +89,8 @@
           // XXX Do something load-ey.
           $.get("/vins/" + $(".vin-textbox").val(), function(data) {
             if (data["success"]) {
-              $(".step_1").addClass("hidden");
-              $(".step_2").removeClass("hidden");
+              $(".step.one").addClass("hidden");
+              $(".step.two").removeClass("hidden");
               $(".current-step").attr("rel", "2");
 
               var model = data.result.model;
@@ -100,19 +106,21 @@
 
         case "2":
           // Validate form data?
-          $(".step_2").addClass("hidden");
-          $(".step_3").removeClass("hidden");
+          $(".step.two").addClass("hidden");
+          $(".step.three").removeClass("hidden");
           $(".current-step").attr("rel", "3");
           break;
 
         case "3":
-          $(".step_3").addClass("hidden");
-          $(".step_4").removeClass("hidden");
+          $(".step.three").addClass("hidden");
+          $(".step.four").removeClass("hidden");
           $(".current-step").attr("rel", "4");
           break;
 
         case "4":
           // Uhoh! Need to finally submit the form data!
+          $("#new_car").submit();
+          break;
           
         default:
           alert("Something went wrong!");
@@ -129,11 +137,25 @@
           $(".year-textbox").val(data.year);
         }
         else {
-          // XXX Do something with errors here.
+          // XXX DO SOMETHING?
         }
       });
     });
-    
+
+    $(".select-country").change(function() {
+      if ($(".select-country option:selected").attr("value") == "US") {
+        // Load the states drop down..
+        $(".state-textbox").addClass("hidden");
+        $(".select-state").removeClass("hidden");
+        $(".select-state").attr("disabled", "");
+      }
+      else {
+        // Hide the states select field and show the state textfield
+        $(".select-state").addClass("hidden");
+        $(".state-textbox").removeClass("hidden");
+      }
+    });
+
     $(".location-lookup-button").click(function() {
       $.get("/locations/lookup", function(data) {
         console.log(data);

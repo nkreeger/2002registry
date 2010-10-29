@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  
+
   def new
     @title = "Sign up"
     @user = User.new
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -12,7 +12,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      # XXX KREEGER DO SOMETHING HERE
+      sign_in @user
+      flash[:notice] = "Welcome to the 2002 registry #{@user.name}!"
+      redirect_to @user
     else
       @title = "Sign up"
       render "new"
