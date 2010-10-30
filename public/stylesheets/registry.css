@@ -154,8 +154,7 @@ body, html {
 /** Field **/
 
 .field {
-  padding: 10px;
-  background-color: #bbb;
+  padding: 5px;
 }
 
 .field label {

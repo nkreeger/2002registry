@@ -1,6 +1,7 @@
 <div class="section">
   <h2>Register a car</h2>
   <% form_for @car, :html => { :multipart => true} do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="current-step" rel="1" />
     <div class="step one">
       <h3>VIN Lookup</h3>
@@ -11,6 +12,7 @@
     </div>
     <div class="step two hidden">
       <h3>Car Information</h3>
+      <%= f.hidden_field :model_id, :class=> "model-id-hidden-field" %>
       <div class="field">
         <label>Model Name:</label>
         <span class="model-name-entry hard-value"></span>
@@ -54,7 +56,9 @@
         <select class="select-state" name="car[location_state]" disabled="true">
           <%= render "layouts/stateoptions" %>
         </select>
-        <%= f.text_field :location_state, :size => 20, :class => "hidden state-textbox" %>
+        <!-- XXXkreeger: Fix me
+          <%= f.text_field :location_state, :size => 20, :class => "hidden state-textbox" %>
+        -->
       </div>
       <div class="field">
         <input type="button" value="Continue" class="next-step-button round" />
@@ -96,6 +100,7 @@
               var model = data.result.model;
               $(".model-name-entry").html(model.name);
               $(".model-number-entry").html(model.number)
+              $(".model-id-hidden-field").attr("value", model.id);
             }
             else {
               // XXX Do something with errors here.
