@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   # Attribute getter
   attr_accessor :password
 
+  has_many :cars
+
   # Attribute getter/setters 
   attr_accessible :address1,
                   :address2,

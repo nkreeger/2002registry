@@ -11,4 +11,8 @@ class CarsController < ApplicationController
     redirect_to current_user
   end
 
+  def show
+    @car = Car.find(params[:id])
+  end
+
 end
