@@ -49,7 +49,7 @@ describe CarsController do
   end
 
   describe "GET show" do
-    before(:each) do
+    it "should load information for the car if it exists" do
       car = mock_model(Car, :id => 1,
                             :user_id => 1,
                             :vin => 234177,
@@ -59,10 +59,19 @@ describe CarsController do
                             :location_country_code => "US",
                             :location_state => "MO")
       Car.should_receive(:find).with("1").and_return(car)
-    end
-
-    it "should load information for the car if it exists" do
+    
       get :show, :id => "1"
+      assigns(:car).vin.should == 234177
+      assigns(:car).color.should == "Polaris"
+      assigns(:car).is_alive.should be_true
+    end
+  end
+
+  describe "GET index" do
+    it "Should load all of the registered cars for now" do
+      Car.should_receive(:all).and_return([mock_model(Car), mock_model(Car)])
+      get :index
+      assigns(:cars).length.should == 2
     end
   end
 

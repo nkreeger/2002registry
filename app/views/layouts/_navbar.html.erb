@@ -5,6 +5,7 @@
     <li><%= link_to "Register Car", new_car_path, :class => "round" %></li>
   <% else %>
     <li><%= link_to "Home", root_path, :class => "round" %></li>  <% end %>
+    <li><%= link_to "View Cars", cars_path, :class => "round" %></li>
   </ul>
   <ul class="account_status">
   <% if signed_in? %>
