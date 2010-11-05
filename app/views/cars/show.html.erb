@@ -1,7 +1,7 @@
 <div class="section">
   <h2>Car: <%= h(@car.vin) %></h2>
   <div class="details">
-    <!-- TODO: Add an image here -->
+    <%= image_tag @car.image.url(:larger) %>
     <ul>
       <li>Year: <%= h(@car.claimed_year) %></li>
       <li>Color: <%= h(@car.color) %></li>

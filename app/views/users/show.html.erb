@@ -2,6 +2,7 @@
   <h2>Your Registered Cars:</h2>
   <% @user.cars.each do |car| %>
     <div class="car">
+      <span class="image"><%= link_to(image_tag(car.image.url(:thumb)), car_path(car)) %></span>
       <span class="vin"><%= link_to(car.vin, car_path(car)) %></span>
       <span class="year"><%= car.claimed_year %></span>
       <span class="color"><%= car.color %></span>
