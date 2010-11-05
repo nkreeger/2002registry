@@ -29,6 +29,14 @@ body, html {
 
 /** Statsbar **/
 
+#statsbar {
+  text-align: center;
+  font-size: 9pt;
+  font-style: italic;
+  padding: 5px;
+
+}
+
 #statsbar ul {
   display: inline-block;
 }
@@ -195,9 +203,10 @@ body, html {
 /** Footer **/
 
 #footer {
-  text-align: right;
+  text-align: center;
   font-size: 9pt;
   font-style: italic;
+  padding: 5px;
 }
 
 /** General **/
