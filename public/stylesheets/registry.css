@@ -1,5 +1,5 @@
 body, html {
-  background-color: #eee;
+  background-color: #ddd;
   font-family: Helvetica-Neue, Helvetica, Arial, sans-serif;
   font-size: 10pt;
 }
@@ -17,7 +17,7 @@ body, html {
 /** Navbar **/
 
 #navbar {
-  background-color: #ccc;
+  background-color: #eee;
   padding: 8px;
   clear: both;
   text-align: left;
@@ -46,14 +46,13 @@ body, html {
 
 #navbar li a {
   text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.3);
   text-decoration: none;
   padding: 3px 4px;
-  color: #fff;
+  color: blue;
 }
 
 #navbar li a:hover {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .signin_layer .field label {
@@ -120,7 +119,7 @@ body, html {
 #content {
   margin: 10px 0;
   padding: 10px;
-  background-color: #ccc;
+  background-color: #eee;
   border: 1px solid #999;
   text-align: left;
 }
