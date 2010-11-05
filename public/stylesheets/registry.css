@@ -27,6 +27,17 @@ body, html {
   margin-top: 8px;
 }
 
+/** Statsbar **/
+
+#statsbar ul {
+  display: inline-block;
+}
+
+#statsbar li {
+  display: inline-block;
+  height: 100%;
+}
+
 /** Navbar **/
 
 #navbar {
