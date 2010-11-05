@@ -1,5 +1,5 @@
 log/*.log
-public/music
+public/system
 tmp/*
 tmp/**/*
 doc/api

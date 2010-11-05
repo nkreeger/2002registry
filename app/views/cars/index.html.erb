@@ -1,0 +1,11 @@
+<div class="section">
+  <h2>All Registered Cars:</h2>
+  <% @cars.each do |car| %>
+    <div class="car">
+      <span class="vin"><%= link_to(car.vin, car_path(car)) %></span>
+      <span class="year"><%= car.claimed_year %></span>
+      <span class="color"><%= car.color %></span>
+      <span class="model"><%= car.model.name %></span>
+    </div>
+  <% end %>
+</div>

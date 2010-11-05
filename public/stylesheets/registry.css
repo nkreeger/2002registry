@@ -14,14 +14,24 @@ body, html {
   padding: 10px 0;
 }
 
+/** UI elements **/
+
+.segment {
+  padding: 10px;
+  background-color: #eee;
+  border: 1px solid #999;
+  text-align: left;
+}
+
+.segment + .segment {
+  margin-top: 8px;
+}
+
 /** Navbar **/
 
 #navbar {
-  background-color: #eee;
   padding: 8px;
   clear: both;
-  text-align: left;
-  border: 1px solid #999;
 }
 
 #navbar .account_status {
@@ -117,11 +127,6 @@ body, html {
 /** Main Content **/
 
 #content {
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #eee;
-  border: 1px solid #999;
-  text-align: left;
 }
 
 /** Section **/
@@ -174,6 +179,14 @@ body, html {
 .field input[type="button"]:hover,
 .field input[type="submit"]:hover {
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+/** Footer **/
+
+#footer {
+  text-align: right;
+  font-size: 9pt;
+  font-style: italic;
 }
 
 /** General **/

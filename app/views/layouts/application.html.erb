@@ -8,8 +8,15 @@
   <body>
     
     <div id="container">
+      <div id="statsbar" class="segment round">
+        <div class="app_menu">
+          <ul>
+            <li>USERS: 1</li>
+          </ul>
+        </div>
+      </div>
 
-      <div id="navbar" class="round">
+      <div id="navbar" class="segment round">
         <%= render "layouts/navbar" %>
       </div>
 
@@ -26,8 +33,12 @@
         </div>
       <% end %>
 
-      <div id="content" class="round">
+      <div id="content" class="segment round">
         <%= yield %>
+      </div>
+
+      <div id="footer" class="segment round">
+        UNDER_DEVELOPMENT
       </div>
       
     </div>
