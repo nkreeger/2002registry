@@ -6,8 +6,7 @@ class CarsController < ApplicationController
 
   def create
     car = Car.create!(params[:car])
-    model = Model.find_by_id(car.model_id)
-    flash[:notice] = "'#{car.vin}' a #{car.claimed_year} #{model.name} " +
+    flash[:notice] = "'#{car.vin}' a #{car.claimed_year} #{car.model.name} " +
                      "has been added to the registry."
     redirect_to current_user
   end
