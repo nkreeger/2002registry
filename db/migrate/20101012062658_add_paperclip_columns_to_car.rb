@@ -4,7 +4,6 @@ class AddPaperclipColumnsToCar < ActiveRecord::Migration
     add_column :cars, :image_content_type, :string
     add_column :cars, :image_file_size,    :integer
     add_column :cars, :image_updated_at,   :datetime
-    
   end
 
   def self.down

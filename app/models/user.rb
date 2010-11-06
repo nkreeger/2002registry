@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 
   has_many :cars
 
+  # Paperclip support
+  has_attached_file :image, :styles => { :thumb => "100x100>" }
+
+
   # Attribute getter/setters 
   attr_accessible :address1,
                   :address2,
@@ -69,5 +73,4 @@ class User < ActiveRecord::Base
     def secure_hash(string)
       Digest::SHA2.hexdigest(string)
     end
-
 end
