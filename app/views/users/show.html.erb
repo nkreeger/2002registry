@@ -1,12 +1,25 @@
 <div class="section">
+  <h2>Your Information:</h2>
+  <div class="user">
+    <span class="name"><%= h(current_user.name) %></span>
+    <span class="name"><%= h(current_user.email) %></span>
+    <span class="name"><%= h(current_user.address1) %></span>
+    <span class="name"><%= h(current_user.address2) %></span>
+    <span class="name"><%= h(current_user.city) %></span>
+    <span class="name"><%= h(current_user.state) %></span>
+    <span class="name"><%= h(current_user.zip) %></span>
+    <span class="name"><%= h(current_user.country) %></span>
+  </div>
+</div>
+<div class="section">
   <h2>Your Registered Cars:</h2>
   <% @user.cars.each do |car| %>
     <div class="car">
       <span class="image"><%= link_to(image_tag(car.image.url(:thumb)), car_path(car)) %></span>
       <span class="vin"><%= link_to(car.vin, car_path(car)) %></span>
-      <span class="year"><%= car.claimed_year %></span>
-      <span class="color"><%= car.color %></span>
-      <span class="model"><%= car.model.name %></span>
+      <span class="year"><%= h(car.claimed_year) %></span>
+      <span class="color"><%= h(car.color) %></span>
+      <span class="model"><%= h(car.model.name) %></span>
     </div>
   <% end %>
 </div>
