@@ -26,6 +26,7 @@ describe UsersController do
                              :name => "Test User",
                              :email => "test@test.com",
                              :address1 => "123 Main St.",
+                             :address2 => nil,
                              :city => "San Francisco",
                              :state => "CA",
                              :zip => 94105,
@@ -34,7 +35,8 @@ describe UsersController do
                              :password_confirm => "foobar",
                              :share_info => true)
       User.should_receive(:new).and_return(mock_user)
-      User.should_receive(:save).and_return(true)
+      mock_user.should_receive(:save).and_return(true)
+      controller.stub(:sign_in).and_return(true)
 
       post :create, {
         :user => {
@@ -50,6 +52,8 @@ describe UsersController do
           :password_confirm => mock_user.password_confirm
         }
       }
+
+      response.should redirect_to(user_path(mock_user.id))
     end
 
     it "should not add a new user account if the incorrect information is used" do
