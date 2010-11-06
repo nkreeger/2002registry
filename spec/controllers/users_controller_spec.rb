@@ -60,8 +60,6 @@ describe UsersController do
       mock_user = mock_model(User)
       User.should_receive(:new).and_return(mock_user)
       mock_user.should_receive(:save).and_return(false)
-
-      # XXXkreeger: Lookup rspec render tests for response.
       post :create, {:user => {}}
       response.should_not redirect_to(user_path(mock_user.id)) 
     end
