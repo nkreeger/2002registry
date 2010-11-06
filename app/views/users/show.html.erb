@@ -1,14 +1,17 @@
 <div class="section">
   <h2>Your Information:</h2>
   <div class="user">
+    <span class="image">
+      <%= image_tag current_user.image.url(:thumb) %>
+    </span>
     <span class="name"><%= h(current_user.name) %></span>
-    <span class="name"><%= h(current_user.email) %></span>
-    <span class="name"><%= h(current_user.address1) %></span>
-    <span class="name"><%= h(current_user.address2) %></span>
-    <span class="name"><%= h(current_user.city) %></span>
-    <span class="name"><%= h(current_user.state) %></span>
-    <span class="name"><%= h(current_user.zip) %></span>
-    <span class="name"><%= h(current_user.country) %></span>
+    <span class="email"><%= h(current_user.email) %></span>
+    <span class="address1"><%= h(current_user.address1) %></span>
+    <span class="address2"><%= h(current_user.address2) %></span>
+    <span class="city"><%= h(current_user.city) %></span>
+    <span class="state"><%= h(current_user.state) %></span>
+    <span class="zip"><%= h(current_user.zip) %></span>
+    <span class="country"><%= h(current_user.country) %></span>
   </div>
 </div>
 <div class="section">

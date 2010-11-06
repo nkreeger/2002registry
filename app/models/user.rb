@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   # Paperclip support
   has_attached_file :image, :styles => { :thumb => "100x100>" }
 
-
   # Attribute getter/setters 
   attr_accessible :address1,
                   :address2,
