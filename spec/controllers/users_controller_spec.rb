@@ -64,4 +64,21 @@ describe UsersController do
       response.should_not redirect_to(user_path(mock_user.id)) 
     end
   end
+
+  describe "GET edit" do
+    it "should work at least..." do
+      get :edit
+      response.should be_success
+    end
+  end
+
+  describe "PUT update" do
+    it "should work at least..." do
+      put :update, {
+        :user => {
+          :name => "Phil Harris"
+        }
+      }
+    end
+  end
 end

@@ -1,5 +1,5 @@
 <div class="section">
-  <h2>Your Information:</h2>
+  <h2>Your Information: <%= link_to("Edit", edit_user_path(current_user)) %></h2>
   <div class="user">
     <span class="image">
       <%= image_tag current_user.image.url(:thumb) %>

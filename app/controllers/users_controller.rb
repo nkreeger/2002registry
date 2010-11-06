@@ -21,4 +21,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if current_user.update_attributes(params[:user])
+      flash[:notice] = "#{current_user.name} your profile has been updated!"
+      redirect_to current_user
+    else
+      flash[:error] = "Could not update your profile!"
+      render "edit"
+    end
+  end
+
 end
