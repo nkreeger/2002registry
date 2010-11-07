@@ -73,12 +73,24 @@ describe UsersController do
   end
 
   describe "PUT update" do
-    it "should work at least..." do
-      put :update, {
-        :user => {
-          :name => "Phil Harris"
-        }
-      }
+    it "should update attributes and redirect to the users page" do
+      mock_user = mock_model(User, :name => "Frank Thomas")
+      controller.stub!(:current_user).and_return(mock_user)
+      mock_user.should_receive(:update_attributes).with(
+         {"name" => "Phil Harris"}).and_return(true)
+      put :update, { :user => { :name => "Phil Harris" } }
+
+      response.should redirect_to(user_path(mock_user.id))
+    end
+
+    it "should show the edit page and have a flash message when update fails" do
+      mock_user = mock_model(User)
+      controller.stub!(:current_user).and_return(mock_user)
+      mock_user.should_receive(:update_attributes).and_return(false)
+
+      put :update, { :user => {} }
+
+      controller.should render_template("edit")
     end
   end
 end
