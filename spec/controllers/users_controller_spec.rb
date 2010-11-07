@@ -78,8 +78,8 @@ describe UsersController do
       controller.stub!(:current_user).and_return(mock_user)
       mock_user.should_receive(:update_attributes).with(
          {"name" => "Phil Harris"}).and_return(true)
-      put :update, { :user => { :name => "Phil Harris" } }
 
+      put :update, { :user => { :name => "Phil Harris" } }
       response.should redirect_to(user_path(mock_user.id))
     end
 
@@ -98,6 +98,19 @@ describe UsersController do
     it "update the users profile image when processed" do
       get :edit_image
       response.should be_success
+    end
+  end
+
+  describe "PUT update_image" do
+    it "should update the users profile image" do
+      mock_user = mock_model(User)
+      mock_image = mock("Image", :url => "/foo/image.png")
+      controller.should_receive(:current_user).exactly(3).times.and_return(mock_user)
+      mock_user.should_receive(:avatar=).and_return(true)
+      mock_user.should_receive(:save!).and_return(true)
+
+      put :update_image, { :user => { :image => nil } }
+      response.should redirect_to(user_path(mock_user.id))
     end
   end
 end

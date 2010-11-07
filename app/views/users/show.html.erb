@@ -2,7 +2,7 @@
   <h2>Your Information: <%= link_to("Edit", edit_user_path(current_user)) %></h2>
   <div class="user">
     <span class="image">
-      <%= image_tag current_user.image.url(:thumb) %>
+      <%= image_tag current_user.avatar.url(:thumb) %>
     </span>
     <span class="name"><%= h(current_user.name) %></span>
     <span class="email"><%= h(current_user.email) %></span>

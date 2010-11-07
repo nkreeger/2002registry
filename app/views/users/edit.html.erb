@@ -12,7 +12,7 @@
       </p>
     </div>
     <div class="field">
-      <%= image_tag current_user.image.url(:thumb) %>      
+      <%= image_tag current_user.avatar.url(:thumb) %>      
       <p>
         <%= link_to("Click here to change your profile picture.",
                     edit_image_user_path(current_user),
@@ -63,6 +63,10 @@
       $.get($(this).attr("href"), function(data) {
         var dialogBox = new DialogBox(data);
         dialogBox.show();
+        $(".update_image_user_button").click(function() {
+          event.preventDefault();
+          dialogBox.close();
+        });
       });
     });
   });

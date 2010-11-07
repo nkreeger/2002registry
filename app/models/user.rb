@@ -2,40 +2,13 @@ require "digest"
 require "paperclip"
 
 class User < ActiveRecord::Base
-  # Attribute getter
   attr_accessor :password
 
   has_many :cars
 
-  # Paperclip support
-  has_attached_file :image, :styles => { :thumb => "100x100>" }
-
-  # Attribute getter/setters 
-  attr_accessible :address1,
-                  :address2,
-                  :city,
-                  :country,
-                  :email,
-                  :name,
-                  :password,
-                  :password_confirmation,
-                  :share_info,
-                  :state,
-                  :zip
-
-  # Attribute validations
-  EmailRegex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates_presence_of     :name, :email
-  validates_length_of       :name, :maximum => 50
-  validates_format_of       :email, :with => EmailRegex
-  validates_uniqueness_of   :email, :case_sensitive => false
-  validates_confirmation_of :password
-  validates_presence_of     :password
-  validates_length_of       :password, :within => 6..40
-  # XXX ADD MORE VALIDATION HERE
+  has_attached_file :avatar, :styles => { :thumb => "100x100>" }
 
   before_save :encrypt_password
-
 
   def has_password?(submitted_password)
     # Comapre encrypted_password with the encrypted version of

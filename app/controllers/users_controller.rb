@@ -37,4 +37,10 @@ class UsersController < ApplicationController
   def edit_image
     render :layout => false
   end
+
+  def update_image
+    current_user.avatar = params[:user][:avatar]
+    current_user.save!
+    redirect_to current_user
+  end
 end
