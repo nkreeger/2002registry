@@ -7,14 +7,18 @@
       <%= f.text_field :email %>
     </div>
     <div class="field">
-      <%= f.label :password, "Password:" %>
-      <%= f.password_field :password, :size => "16" %>
+      <p>
+        <a href="#">Click here to change your password.</a>
+      </p>
     </div>
     <div class="field">
-      <%= f.label :password_confirm, "Confirm Password:" %>
-      <%= f.password_field :password_confirm, :size => "16" %>
+      <%= image_tag current_user.image.url(:thumb) %>      
+      <p>
+        <%= link_to("Click here to change your profile picture.",
+                    edit_image_user_path(current_user),
+                    :class => "change_profile_picture") %>
+      </p>
     </div>
-    <br/>
     <div class="field">
       <%= f.label :name, "Name:" %>
       <%= f.text_field :name %>
@@ -52,4 +56,14 @@
     </div>
   <% end %>
 </div>
-
+<script type="text/javascript">
+  $(function() {
+    $(".change_profile_picture").click(function(event) {
+      event.preventDefault();
+      $.get($(this).attr("href"), function(data) {
+        var dialogBox = new DialogBox(data);
+        dialogBox.show();
+      });
+    });
+  });
+</script>

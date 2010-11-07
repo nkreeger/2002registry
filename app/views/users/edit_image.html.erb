@@ -1,0 +1,15 @@
+<div class="section">
+  <h2>Update your profile picture</h2>
+  <div class="field">
+    <%= image_tag current_user.image.url(:thumb) %>
+  </div>
+
+  <% form_for current_user, :html => { :multipart => true} do |f| %>
+    <div class="field">
+      <%= f.file_field :image, :size => 16 %>
+    </div>
+    <div class="field">
+      <%= f.submit "Submit", :class => "round" %>
+    </div>
+  <% end %>
+</div>

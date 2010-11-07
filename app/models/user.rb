@@ -1,4 +1,5 @@
 require "digest"
+require "paperclip"
 
 class User < ActiveRecord::Base
   # Attribute getter

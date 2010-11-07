@@ -4,7 +4,7 @@
     Please be sure to fill in all the fields correctly, as this will be 
     the information that you will register your car with.
   </p>
-  <% form_for(@user) do |f| %>
+  <% form_for(@user, :html => { :multipart => true }) do |f| %>
     <%= f.error_messages %>
     <div class="field">
       <%= f.label :email, "Email:" %>
@@ -50,7 +50,11 @@
      <select id="user_country" name="user[country]">
        <%= render "layouts/countryoptions" %>
      </select>
-   </div>
+    </div>
+    <div class="field">
+    <%= f.label :image, "Profile Image: " %>
+      <%= f.file_field :image, :size => 16 %>
+    </div>
     <div class="field">
       <%= f.submit "Submit", :class => "round" %>
     </div>

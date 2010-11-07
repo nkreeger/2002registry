@@ -93,4 +93,11 @@ describe UsersController do
       controller.should render_template("edit")
     end
   end
+
+  describe "GET edit_image" do
+    it "update the users profile image when processed" do
+      get :edit_image
+      response.should be_success
+    end
+  end
 end

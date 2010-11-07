@@ -34,4 +34,7 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_image
+    render :layout => false
+  end
 end
