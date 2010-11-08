@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def update_password!(old_password, new_password)
-    # XXXkreeger: Add this method to the unit tests.
+    # XXX KREEGER: Add this method to the unit tests.
     # XXX KREEGER: Validate the old vs. the new password here?
     # XXX KREEGER: This method doesn't work, |password| is alwats nil? in encrypt_password
     if has_password?(old_password)
