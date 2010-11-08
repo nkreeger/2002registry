@@ -8,7 +8,9 @@
     </div>
     <div class="field">
       <p>
-        <a href="#">Click here to change your password.</a>
+        <%= link_to("Click here to change your password.",
+                    change_password_user_path(current_user),
+                    :class => "change_password") %>
       </p>
     </div>
     <div class="field">
@@ -58,15 +60,18 @@
 </div>
 <script type="text/javascript">
   $(function() {
+    $(".change_password").click(function(event) {
+      event.preventDefault();
+      $.get($(this).attr("href"), function(data) {
+        var dialogBox = new DialogBox(data);
+        dialogBox.show();
+      });
+    });
     $(".change_profile_picture").click(function(event) {
       event.preventDefault();
       $.get($(this).attr("href"), function(data) {
         var dialogBox = new DialogBox(data);
         dialogBox.show();
-        $(".update_image_user_button").click(function() {
-          event.preventDefault();
-          dialogBox.close();
-        });
       });
     });
   });

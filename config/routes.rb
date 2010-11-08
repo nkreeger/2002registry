@@ -5,7 +5,10 @@ ActionController::Routing::Routes.draw do |map|
   map.signout 'signout',  :controller => 'sessions', :action => 'destroy'
   
   map.resources :users, :only => [:new, :create, :show, :edit, :update],
-                        :member => { :edit_image => :get, :update_image => :put }
+                        :member => { :edit_image => :get,
+                                     :update_image => :put,
+                                     :change_password => :get,
+                                     :update_password => :put }
   map.resources :sessions, :only => [:new, :create, :destroy]
   map.resources :vins, :only => [:show, :guess_year], :member => { :guess_year => :get }
   map.resources :cars, :only => [:new, :create, :show, :index]

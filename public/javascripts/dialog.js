@@ -6,17 +6,15 @@ function DialogBox(initialHtml)
   $("body").append(maskDiv);
 
   this.show = function() {
-    maskDiv.show();
+    maskDiv.fadeIn();
     dialogDiv.css("margin-left", -(dialogDiv.width() / 2) + "px");
     dialogDiv.css("margin-top", ($(document).height() / 6) + "px");
     dialogDiv.fadeIn();
   };
 
   this.close = function() {
-    dialogDiv.fadeOut(function() {
-      dialogDiv.remove();
-      maskDiv.remove();
-    });
+    dialogDiv.fadeOut();
+    maskDiv.fadeOut();
     return false;
   };
 

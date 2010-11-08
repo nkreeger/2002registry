@@ -113,4 +113,22 @@ describe UsersController do
       response.should redirect_to(user_path(mock_user.id))
     end
   end
+
+  describe "GET change_password" do
+    it "should allow the user to change their password" do
+      get :change_password
+      response.should be_success
+    end
+  end
+
+  describe "PUT update_password" do
+    it "should update the users password" do
+      mock_user = mock_model(User)
+      controller.should_receive(:current_user).twice.and_return(mock_user)
+      mock_user.should_receive(:update_password).with("foobar", "barfoo")
+
+      put :update_password, { :old_password => "foobar", :new_password => "barfoo" }
+      response.should redirect_to(user_path(mock_user.id))
+    end
+  end
 end

@@ -43,4 +43,14 @@ class UsersController < ApplicationController
     current_user.save!
     redirect_to current_user
   end
+
+  def change_password
+    render :layout => false
+  end
+
+  def update_password
+    # XXX VALIDATE HERE!
+    current_user.update_password!(params[:old_password], params[:new_password])
+    redirect_to current_user
+  end
 end
