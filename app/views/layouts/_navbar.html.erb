@@ -36,6 +36,11 @@
 
 <script type="text/javascript">
   $(function() {
-    $(".signin_target").menuPopup(".signin_layer");
+    $(".signin_target").click(function(event) {
+      event.preventDefault();
+      var dialogBox = new DialogBox($(".signin_layer").html());
+      dialogBox.show();
+    });
+    //$(".signin_target").menuPopup(".signin_layer");
   });
 </script>
