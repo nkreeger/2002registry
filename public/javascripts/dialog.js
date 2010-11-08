@@ -8,7 +8,7 @@ function DialogBox(initialHtml)
   this.show = function() {
     maskDiv.show();
     dialogDiv.css("margin-left", -(dialogDiv.width() / 2) + "px");
-    dialogDiv.css("margin-top", -(dialogDiv.height() / 2) + "px");
+    dialogDiv.css("margin-top", ($(document).height() / 6) + "px");
     dialogDiv.fadeIn();
   };
 

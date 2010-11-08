@@ -217,7 +217,7 @@ body, html {
   background: #eee;
   -moz-box-shadow: 0 3px 25px rgba(0, 0, 0, 0.5);
   position: fixed;
-  top: 50%;
+  top: 0;
   left: 50%;
   text-align: left;
   z-index: 200;
