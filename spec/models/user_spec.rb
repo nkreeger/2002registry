@@ -21,9 +21,22 @@ describe User do
     User.create!(@valid_attributes)
   end
 
-  it "should update the users password and underneath storage with 'update_password'" do
-    user = User.create!(@valid_attributes)
-    user.update_password!("password_val", "foobar")
-    user.has_password?("foobar").should be_true
+  describe "Updating the users password" do
+    it "should update the users password and underneath storage with 'update_password'" do
+      user = User.create!(@valid_attributes)
+      user.update_password!("password_val", "foobar")
+      user.has_password?("foobar").should be_true
+    end
+
+    it "should throw an exception if the incorrect original password is used" do
+      user = User.create!(@valid_attributes)
+
+      lambda {
+        user.update_password("nottherightpassword", "foobar")
+      }.should raise_error
+
+      user.has_password?("nottherightpassword").should be_false
+    end
   end
+
 end
