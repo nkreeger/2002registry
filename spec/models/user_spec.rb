@@ -11,13 +11,19 @@ describe User do
       :state => "value for state",
       :zip => "value for zip",
       :country => "value for country",
-      :password => "value for password",
-      :password_confirm => "value for password_confirm",
+      :password => "password_val",
+      :password_confirm => "password",
       :share_info => false
     }
   end
 
   it "should create a new instance given valid attributes" do
     User.create!(@valid_attributes)
+  end
+
+  it "should update the users password and underneath storage with 'update_password'" do
+    user = User.create!(@valid_attributes)
+    user.update_password!("password_val", "foobar")
+    user.has_password?("foobar").should be_true
   end
 end

@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     # XXX KREEGER: Validate the old vs. the new password here?
     # XXX KREEGER: This method doesn't work, |password| is alwats nil? in encrypt_password
     if has_password?(old_password)
-      password = new_password
+      self.password = new_password
       encrypt_password
       self.save
     else
