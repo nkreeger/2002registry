@@ -60,3 +60,76 @@
     </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  $(function() {
+    $("#user_submit").click(function(event) {
+      var isValid = true;
+      var errors = [];
+
+      if ($("#user_email").val().indexOf("@") == -1) {
+        isValid = false;
+        errors.push({
+          field: "email",
+          message: "Invalid email."
+        });
+      }
+
+      var pass = $("#user_password").val();
+      if (pass.length <= 6) {
+        errors.push({
+          field: "password",
+          message: "Password is not at least 6 characters long."
+        })
+      }
+      if (pass != $("user_password_confirm").val()) {
+        errors.push({
+          field: "password_confirm",
+          message: "Passwords do not match."
+        })
+      }
+
+      if ($("#user_name").val() == "") {
+        errors.push({
+          field: "name",
+          message: "Please enter your first name."
+        })
+      }
+
+      if ($("#user_city").val() == "") {
+        errors.push({
+          field: "city",
+          message: "Please supply your current city."
+        })
+      }
+
+      if ($("#user_state option:selected").attr("value") == "") {
+        errors.push({
+          field: "state",
+          message: "Please pick your current state."
+        })
+      }
+
+      if ($("#user_zip").val() == "") {
+        errors.push({
+          field: "zip",
+          message: "Please enter your current zip code."
+        })
+      }
+
+      if ($("#user_country option:selected").attr("value") == "") {
+        errors.push({
+          field: "country",
+          message: "Please pick your current country."
+        })
+      }
+
+      if (!isValid) {
+        for (var i = 0; i < errors.length; ++i) {
+          console.log(errors[i]);
+        }
+        event.preventDefault();
+      }
+    });
+  });
+</script>
