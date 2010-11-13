@@ -94,14 +94,20 @@
           // XXX Do something load-ey.
           $.get("/vins/" + $(".vin-textbox").val(), function(data) {
             if (data["success"]) {
-              $(".step.one").addClass("hidden");
-              $(".step.two").removeClass("hidden");
-              $(".current-step").attr("rel", "2");
+              if (data["is_registered"]) {
+                // XXX Do something with the 'is_already_registered' case
+                alert("IS ALREADY REGISTERED! - NICK WILL DO SOMETHING HERE SOON");
+              }
+              else {
+                $(".step.one").addClass("hidden");
+                $(".step.two").removeClass("hidden");
+                $(".current-step").attr("rel", "2");
 
-              var model = data.result.model;
-              $(".model-name-entry").html(model.name);
-              $(".model-number-entry").html(model.number)
-              $(".model-id-hidden-field").attr("value", model.id);
+                var model = data.result.model;
+                $(".model-name-entry").html(model.name);
+                $(".model-number-entry").html(model.number)
+                $(".model-id-hidden-field").attr("value", model.id);
+              }
             }
             else {
               // XXX Do something with errors here.
@@ -124,7 +130,6 @@
           break;
 
         case "4":
-          // Uhoh! Need to finally submit the form data!
           $("#new_car").submit();
           break;
           
