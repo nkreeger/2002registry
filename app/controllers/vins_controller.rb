@@ -4,9 +4,11 @@ class VinsController < ApplicationController
     if model.nil?
       render :json => { :success => false }
     else
+      registered_car = Car.find_by_vin(params[:id].to_i)
       render :json => {
         :success => true,
-        :result => model
+        :is_registered => (registered_car.nil? ? false : true),
+        :result => model,
       }
     end
   end
