@@ -126,7 +126,6 @@
 
       if (!isValid) {
         for (var i = 0; i < errors.length; ++i) {
-          console.log(errors[i]);
           $("#user_" + errors[i]["field"]).parent().addClass("error");
         }
         event.preventDefault();
