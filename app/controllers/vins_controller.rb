@@ -28,6 +28,7 @@ class VinsController < ApplicationController
   def registered_user
     registered_car = Car.find_by_vin(params[:id].to_i)
     if registered_car.nil?
+      render :json => { :success => false }
     else
       user = registered_car.user
       render :json => {
