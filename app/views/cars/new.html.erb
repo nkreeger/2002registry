@@ -96,7 +96,26 @@
             if (data["success"]) {
               if (data["is_registered"]) {
                 // XXX Do something with the 'is_already_registered' case
-                alert("IS ALREADY REGISTERED! - NICK WILL DO SOMETHING HERE SOON");
+                var url = "/vins/" + $(".vin-textbox").val() + "/registered_user";
+                $.get(url, function(data) {
+                  if (data["success"]) {
+                    var userName = data["user"]["name"];
+                    var userID = data["user"]["id"];
+                    var html =
+                      "<div class=\"section\">" +
+                        "<h2>This vin is already registered</h2" +
+                        "<p>" +
+                           "This vin has already been registered by " +
+                           userName + ". We can do something about this later" +
+                        "</p>" +
+                      "</div>";
+                    var dialogBox = new DialogBox(html);
+                    dialogBox.show();
+                  }
+                  else {
+                    // XXX Do something with errors here.
+                  }
+                });
               }
               else {
                 $(".step.one").addClass("hidden");
