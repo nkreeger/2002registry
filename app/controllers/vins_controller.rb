@@ -24,4 +24,19 @@ class VinsController < ApplicationController
       render :json => { :success => true, :year => start_year + variance.round }
     end
   end
+
+  def registered_user
+    registered_car = Car.find_by_vin(params[:id].to_i)
+    if registered_car.nil?
+    else
+      user = registered_car.user
+      render :json => {
+        :success => true,
+        :user => {
+          :id => user.id,
+          :name => user.name
+        }
+      }
+    end
+  end
 end

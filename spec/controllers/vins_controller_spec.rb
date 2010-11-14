@@ -50,4 +50,22 @@ describe VinsController do
       json_response["year"].should == 1975
     end
   end
+
+  describe "GET registered_user" do
+    it "should return a JSON response with some basic user information for" +
+       "a VIN that has already been registered" do
+
+      mock_user = mock_model(User, :name => "Mock User")
+      mock_car = mock_model(Car, :vin => 2364177)
+      Car.should_receive(:find_by_vin).with(2364177).and_return(mock_car)
+      mock_car.should_receive(:user).and_return(mock_user)
+
+      get :registered_user, :id => 2364177
+      response.should be_success
+      json_response = ActiveSupport::JSON.decode(response.body.as_json)
+      json_response["success"].should be_true
+      json_response["user"]["id"].should == mock_user.id
+      json_response["user"]["name"].should == "Mock User"
+    end
+  end
 end

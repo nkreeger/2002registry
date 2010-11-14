@@ -10,7 +10,8 @@ ActionController::Routing::Routes.draw do |map|
                                      :change_password => :get,
                                      :update_password => :put }
   map.resources :sessions, :only => [:new, :create, :destroy]
-  map.resources :vins, :only => [:show, :guess_year], :member => { :guess_year => :get }
+  map.resources :vins, :only => [:show, :guess_year],
+                       :member => { :guess_year => :get, :registered_user => :get }
   map.resources :cars, :only => [:new, :create, :show, :index]
   map.resources :locations, :only => [:lookup], :collection => { :lookup => :get }
   
