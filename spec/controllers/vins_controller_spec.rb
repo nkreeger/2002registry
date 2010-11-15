@@ -65,6 +65,7 @@ describe VinsController do
       json_response = ActiveSupport::JSON.decode(response.body.as_json)
       json_response["success"].should be_true
       json_response["user"]["name"].should == "Mock User"
+      json_response["user"]["id"].should == mock_user.id
       json_response["car"]["id"].should == mock_car.id
     end
 
