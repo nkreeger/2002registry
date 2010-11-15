@@ -75,4 +75,31 @@ describe CarsController do
     end
   end
 
+  describe "POST claim_car" do
+    it "Should update the user_id for the claimed car." do
+      mock_user1 = mock_model(User, :name => "Old Owner")
+      mock_user2 = mock_model(User, :name => "New Owner")
+      mock_car = mock(:vin => 2364177, :user => mock_user1)
+
+      Car.should_receive(:find).with("1").and_return(mock_car)
+      User.should_receive(:find).with("2").and_return(mock_user2)
+      mock_car.should_receive(:user=).with(mock_user2)
+      mock_car.should_receive(:save).and_return(true)
+
+      post :claim, :id => "1", :user_id => "2"
+      response.should be_success
+      json_response = ActiveSupport::JSON.decode(response.body.as_json)
+      json_response["success"].should be_true
+    end
+
+    it "Should return false if the VIN hasn't already been registered" do
+      Car.should_receive(:find).with("1").and_return(nil)
+
+      post :claim, :id => "1", :user_id => "2"
+      response.should be_success
+      json_response = ActiveSupport::JSON.decode(response.body.as_json)
+      json_response["success"].should be_false
+    end
+  end
+
 end

@@ -34,8 +34,10 @@ class VinsController < ApplicationController
       render :json => {
         :success => true,
         :user => {
-          :id => user.id,
           :name => user.name
+        },
+        :car => {
+          :id => registered_car.id
         }
       }
     end

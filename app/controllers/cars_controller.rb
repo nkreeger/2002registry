@@ -19,4 +19,19 @@ class CarsController < ApplicationController
     @cars = Car.all
   end
 
+  def claim
+    car = Car.find(params[:id])
+    if car.nil?
+      render :json => { :success => false }
+    else
+      new_user = User.find(params[:user_id])
+      car.user = new_user
+      if car.save
+        render :json => { :success => true }
+      else
+        render :json => { :success => false }
+      end
+    end
+  end
+
 end
