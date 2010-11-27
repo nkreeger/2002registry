@@ -84,7 +84,6 @@
     $(':input', '#new_car').not(":button, :submit, :reset, :hidden")
                            .val('')
                            .removeAttr('selected');
-    
     $.fn.nextStep = function() {
       // Determine what step to do next.
       var curStep = $(".current-step").attr("rel");
