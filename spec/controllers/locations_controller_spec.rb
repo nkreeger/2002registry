@@ -8,7 +8,7 @@ describe LocationsController do
 
       get :lookup
       response.should be_success
-      
+
       json_response = ActiveSupport::JSON.decode(response.body.as_json)
       json_response["success"].should be_true
       json_response["country_code"].should == "US"
