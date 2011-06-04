@@ -151,6 +151,10 @@ body {
   display: none;
 }
 
+.error {
+  background-color: pink;
+}
+
 .italic {
   font-style: italic;
 }
@@ -213,6 +217,22 @@ body {
   text-align: left;
   margin-left: auto;
   margin-right: auto;
+}
+
+/**
+ * New
+ */
+
+.section .newuser {
+  display: inline-block;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section .newuser p {
+  width: 400px;
+  padding: 5px 0;
 }
 
 /***************************************************************************************************

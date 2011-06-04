@@ -1,64 +1,66 @@
 <div class="section">
-  <h2>Create a 2002registry User Account</h2>
-  <p>
-    Please be sure to fill in all the fields correctly, as this will be 
-    the information that you will register your car with.
-  </p>
-  <% form_for(@user, :html => { :multipart => true }) do |f| %>
-    <%= f.error_messages %>
-    <div class="field">
-      <%= f.label :email, "Email:" %>
-      <%= f.text_field :email %>
-    </div>
-    <div class="field">
-      <%= f.label :password, "Password:" %>
-      <%= f.password_field :password, :size => "16" %>
-    </div>
-    <div class="field">
-      <%= f.label :password_confirm, "Confirm Password:" %>
-      <%= f.password_field :password_confirm, :size => "16" %>
-    </div>
-    <br/>
-    <div class="field">
-      <%= f.label :name, "Name:" %>
-      <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label :address1, "Address 1:" %>
-      <%= f.text_field :address1, :size => "25" %>
-   </div>
-   <div class="field">
-     <%= f.label :address2, "Address 2:" %>
-     <%= f.text_field :address2, :size => "25" %>
-   </div>
-   <div class="field">
-     <%= f.label :city, "City:" %>
-     <%= f.text_field :city, :size => "25" %>
-   </div>
-   <div class="field">
-     <%= f.label :state, "State:" %>
-     <select id="user_state" name="user[state]">
-       <%= render "layouts/stateoptions" %>
-     </select>
-   </div>
-   <div class="field">
-     <%= f.label :zip, "ZIP:" %>
-     <%= f.text_field :zip, :size => "10" %>
-   </div>
-   <div class="field">
-     <%= f.label :country, "Country: " %>
-     <select id="user_country" name="user[country]">
-       <%= render "layouts/countryoptions" %>
-     </select>
-    </div>
-    <div class="field">
-    <%= f.label :avatar, "Profile Image: " %>
-      <%= f.file_field :avatar, :size => 16 %>
-    </div>
-    <div class="field">
-      <%= f.submit "Submit", :class => "round" %>
-    </div>
-  <% end %>
+  <div class="newuser">
+    <h2>Create a 2002registry User Account</h2>
+    <p>
+      Please be sure to fill in all the fields correctly, as this will be 
+      the information that you will register your car with.
+    </p>
+    <% form_for(@user, :html => { :multipart => true }) do |f| %>
+      <%= f.error_messages %>
+      <div class="field">
+        <%= f.label :email, "Email:" %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="field">
+        <%= f.label :password, "Password:" %>
+        <%= f.password_field :password, :size => "16" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirm, "Confirm Password:" %>
+        <%= f.password_field :password_confirm, :size => "16" %>
+      </div>
+      <br/>
+      <div class="field">
+        <%= f.label :name, "Name:" %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :address1, "Address 1:" %>
+        <%= f.text_field :address1, :size => "25" %>
+     </div>
+     <div class="field">
+       <%= f.label :address2, "Address 2:" %>
+       <%= f.text_field :address2, :size => "25" %>
+     </div>
+     <div class="field">
+       <%= f.label :city, "City:" %>
+       <%= f.text_field :city, :size => "25" %>
+     </div>
+     <div class="field">
+       <%= f.label :state, "State:" %>
+       <select id="user_state" name="user[state]">
+         <%= render "layouts/stateoptions" %>
+       </select>
+     </div>
+     <div class="field">
+       <%= f.label :zip, "ZIP:" %>
+       <%= f.text_field :zip, :size => "10" %>
+     </div>
+     <div class="field">
+       <%= f.label :country, "Country: " %>
+       <select id="user_country" name="user[country]">
+         <%= render "layouts/countryoptions" %>
+       </select>
+      </div>
+      <div class="field">
+      <%= f.label :avatar, "Profile Image: " %>
+        <%= f.file_field :avatar, :size => 16 %>
+      </div>
+      <div class="field">
+        <%= f.submit "Submit", :class => "round" %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <script type="text/javascript">
@@ -66,7 +68,6 @@
     $("#user_submit").click(function(event) {
       var isValid = true;
       var errors = [];
-
       if ($("#user_email").val().indexOf("@") == -1) {
         isValid = false;
         errors.push({
@@ -74,7 +75,6 @@
           message: "Invalid email."
         });
       }
-
       var pass = $("#user_password").val();
       if (pass.length <= 6) {
         errors.push({
@@ -88,42 +88,36 @@
           message: "Passwords do not match."
         })
       }
-
       if ($("#user_name").val() == "") {
         errors.push({
           field: "name",
           message: "Please enter your first name."
         })
       }
-
       if ($("#user_city").val() == "") {
         errors.push({
           field: "city",
           message: "Please supply your current city."
         })
       }
-
       if ($("#user_state option:selected").attr("value") == "") {
         errors.push({
           field: "state",
           message: "Please pick your current state."
         })
       }
-
       if ($("#user_zip").val() == "") {
         errors.push({
           field: "zip",
           message: "Please enter your current zip code."
         })
       }
-
       if ($("#user_country option:selected").attr("value") == "") {
         errors.push({
           field: "country",
           message: "Please pick your current country."
         })
       }
-
       if (!isValid) {
         for (var i = 0; i < errors.length; ++i) {
           $("#user_" + errors[i]["field"]).parent().addClass("error");
@@ -133,8 +127,3 @@
     });
   });
 </script>
-<style type="text/css">
-  .error {
-    background-color: pink;
-  }
-</style>
