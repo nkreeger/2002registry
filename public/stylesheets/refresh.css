@@ -77,6 +77,19 @@ body, html {
 }
 
 /**
+ * Form fields
+ */
+
+.field {
+  padding: 3px 0;
+}
+
+.field label {
+  width: 120px;
+  display: inline-block;
+}
+
+/**
  * Misc.
  */
 
@@ -130,4 +143,15 @@ body, html {
 
 .user .address2 {
   display: block;
+}
+
+/**
+ * Edit
+ */
+
+.section .edituser {
+  display: inline-block;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
