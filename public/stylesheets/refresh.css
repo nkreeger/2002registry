@@ -195,10 +195,25 @@ body {
   display: block;
 }
 
-.car {
+.showuser .car {
   text-align: left;
   padding: 5px;
 }
+
+/**
+ * Edit
+ */
+
+.section .edituser {
+  display: inline-block;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/***************************************************************************************************
+ * Car
+ **************************************************************************************************/
 
 .car + .car {
   border-top: 1px dashed #ddd;
@@ -227,13 +242,24 @@ body {
 }
 
 /**
- * Edit
+ * Cars index
  */
-
-.section .edituser {
-  display: inline-block;
-  text-align: left;
-  margin-left: auto;
-  margin-right: auto;
+.section.carsindex .car {
+  padding: 5px 0;
 }
 
+.section.carsindex .vin {
+  display: inline;
+}
+
+.section.carsindex .year {
+  display: inline;
+}
+
+.section.carsindex .color {
+  display: inline;
+}
+
+.section.carsindex .model {
+  display: inline;
+}
