@@ -21,9 +21,10 @@
       <div class="car">
         <span class="image"><%= link_to(image_tag(car.image.url(:thumb)), car_path(car)) %></span>
         <span class="vin"><%= link_to(car.vin, car_path(car)) %></span>
-        <span class="year"><%= h(car.claimed_year) %></span>
-        <span class="color"><%= h(car.color) %></span>
+        <span class="year"><%= h(car.claimed_year) %></span> - 
         <span class="model"><%= h(car.model.name) %></span>
+        <span class="color"><%= h(car.color) %></span>
+        <div class="clearfix"></div>
       </div>
     <% end %>
   </div>

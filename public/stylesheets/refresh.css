@@ -192,6 +192,37 @@ body, html {
   display: block;
 }
 
+.car {
+  text-align: left;
+  padding: 5px;
+}
+
+.car + .car {
+  border-top: 1px dashed #ddd;
+}
+
+.car .image {
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+}
+
+.car .vin {
+  display: block;
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+.car .year {
+}
+
+.car .color {
+  display: block;
+}
+
+.car .model {
+}
+
 /**
  * Edit
  */
@@ -202,3 +233,4 @@ body, html {
   margin-left: auto;
   margin-right: auto;
 }
+
