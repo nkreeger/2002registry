@@ -1,28 +1,31 @@
-<div class="section">
-  <h2>Your Information: <%= link_to("Edit", edit_user_path(current_user)) %></h2>
-  <div class="user">
-    <span class="image">
-      <%= image_tag current_user.avatar.url(:thumb) %>
-    </span>
-    <span class="name"><%= h(current_user.name) %></span>
-    <span class="email"><%= h(current_user.email) %></span>
-    <span class="address1"><%= h(current_user.address1) %></span>
-    <span class="address2"><%= h(current_user.address2) %></span>
-    <span class="city"><%= h(current_user.city) %></span>
-    <span class="state"><%= h(current_user.state) %></span>
-    <span class="zip"><%= h(current_user.zip) %></span>
-    <span class="country"><%= h(current_user.country) %></span>
-  </div>
-</div>
-<div class="section">
-  <h2>Your Registered Cars:</h2>
-  <% @user.cars.each do |car| %>
-    <div class="car">
-      <span class="image"><%= link_to(image_tag(car.image.url(:thumb)), car_path(car)) %></span>
-      <span class="vin"><%= link_to(car.vin, car_path(car)) %></span>
-      <span class="year"><%= h(car.claimed_year) %></span>
-      <span class="color"><%= h(car.color) %></span>
-      <span class="model"><%= h(car.model.name) %></span>
+<div class="showuser">
+  <div class="section user border">
+    <h2>Your Information: <%= link_to("Edit", edit_user_path(current_user)) %></h2>
+    <div class="user">
+      <span class="image">
+        <%= image_tag current_user.avatar.url(:thumb) %>
+      </span>
+      <span class="name"><%= h(current_user.name) %></span>
+      <span class="email"><%= h(current_user.email) %></span>
+      <span class="address1"><%= h(current_user.address1) %></span>
+      <span class="address2"><%= h(current_user.address2) %></span>
+      <span class="city"><%= h(current_user.city) %></span>
+      <span class="state"><%= h(current_user.state) %></span>
+      <span class="zip"><%= h(current_user.zip) %></span>
+      <span class="country"><%= h(current_user.country) %></span>
     </div>
-  <% end %>
+  </div>
+  <div class="section cars border">
+    <h2>Your Registered Cars:</h2>
+    <% @user.cars.each do |car| %>
+      <div class="car">
+        <span class="image"><%= link_to(image_tag(car.image.url(:thumb)), car_path(car)) %></span>
+        <span class="vin"><%= link_to(car.vin, car_path(car)) %></span>
+        <span class="year"><%= h(car.claimed_year) %></span>
+        <span class="color"><%= h(car.color) %></span>
+        <span class="model"><%= h(car.model.name) %></span>
+      </div>
+    <% end %>
+  </div>
+  <div class="clearfix"></div>
 </div>
