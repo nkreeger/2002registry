@@ -1,24 +1,21 @@
 <div class="app_menu">
   <ul>
   <% if signed_in? %>
+    <li>
+      <%= h(current_user.name) %> (<%= link_to "Sign Out", signout_path, :class => "round" %>)
+    </li>
     <li><%= link_to "Home", user_path(current_user), :class => "round" %></li>
     <li><%= link_to "Register Car", new_car_path, :class => "round" %></li>
   <% else %>
+    <li><%= link_to "Sign In", signin_path, :class => "round" %></li>
     <li><%= link_to "Home", root_path, :class => "round" %></li>  <% end %>
     <li><%= link_to "View Cars", cars_path, :class => "round" %></li>
   </ul>
   <ul class="account_status">
-  <% if signed_in? %>
-    <li><%= h(current_user.name) %></li>
-    <li><%= link_to "Sign Out", signout_path, :class => "round" %></li>
-  <% else %>
-    <li><a class="hovertarget signin_target round">Sign in</a></li>
-    <li><%= link_to "Create Account", signup_path, :class => "round" %></li>
-  <% end %>
   </ul>
 </div>
 
-<div class="hovermenu signin_layer round">
+<div class="hovermenu signin_layer round" style="display: none">
   <div class="section">
     <h2>Sign in to the Registry</h2>
     <% form_for(:session, :url => sessions_path) do |f| %>

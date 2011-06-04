@@ -6,49 +6,45 @@
     <%= javascript_include_tag javascript_files %>
   </head>
   <body>
-    
-    <div id="container">
-      <div id="statsbar" class="segment round">
-        <div class="app_menu">
-          <ul>
-            <li>CARS: <%= h(Car.all.length) %></li>
-            <li>USERS: <%= h(User.all.length) %></li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="navbar" class="segment round">
-        <%= render "layouts/navbar" %>
-      </div>
-
-      <% unless flash[:notice].blank? %>
-        <div class="flash notice round">
-          <%= h(flash[:notice]) %>
-          <span class="button close">X</span>
-        </div>
-      <% end %>
-      <% unless flash[:error].blank? %>      
-        <div class="flash error round">
-          <%= h(flash[:error]) %>
-          <span class="button close">X</span>
-        </div>
-      <% end %>
-
-      <div id="content" class="segment round">
-        <%= yield %>
-      </div>
-
-      <div id="footer" class="segment round">
-        UNDER_DEVELOPMENT
+    <div id="statsbar" class="segment round">
+      <div class="app_menu">
+        <ul>
+          <li>CARS: <%= h(Car.all.length) %></li>
+          <li>USERS: <%= h(User.all.length) %></li>
+        </ul>
       </div>
     </div>
-
-  <script type="text/javascript">
-    $(function() {
-      $(".button.close").click(function() {
-        $(this).parent().fadeOut("fast");
-      })
-    });
-  </script>
+    <div id="navbar" class="segment round">
+      <%= render "layouts/navbar" %>
+    </div>
+    <div id="container">
+      <div id="content" class="segment round">
+        <!-- TODO: Do something w/ the flash junk... -->
+        <% unless flash[:notice].blank? %>
+          <div class="flash notice round">
+            <%= h(flash[:notice]) %>
+            <span class="button close">X</span>
+          </div>
+        <% end %>
+        <% unless flash[:error].blank? %>      
+          <div class="flash error round">
+            <%= h(flash[:error]) %>
+            <span class="button close">X</span>
+          </div>
+        <% end %>
+        <!-- END TODO -->
+        <%= yield %>
+      </div>
+    </div>
+    <div id="footer" class="segment round">
+      UNDER_DEVELOPMENT
+    </div>
+    <script type="text/javascript">
+      $(function() {
+        $(".button.close").click(function() {
+          $(this).parent().fadeOut("fast");
+        })
+      });
+    </script>
   </body>
 </html>
