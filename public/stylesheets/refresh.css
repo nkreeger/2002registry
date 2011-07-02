@@ -11,29 +11,24 @@ body {
 }
 
 /**
- * Statsbar
- */
-#statsbar {
-  background-color: #BCF1ED;
-  color: black;
-  padding: 2px;
-}
-
-#statsbar ul li {
-  display: inline;
-}
-
-/**
  * Navbar
  */
 #navbar {
-  background-color: #FDEDD0;
+  color: #fff;
+  background-color: #000;
+  border-bottom: 2px solid #ccc;
   padding: 2px;
-  text-align: right;
+  text-align: left;
+}
+
+#navbar a {
+  color: #fff;
 }
 
 #navbar .app_menu {
-  width: 90%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #navbar ul {
@@ -43,7 +38,6 @@ body {
 #navbar ul li {
   display: inline-block;
   padding: 5px;
-  color: blue;
 }
 
 /**
@@ -64,7 +58,12 @@ body {
  * Footer
  */
 #footer {
-  background-color: #BCF1ED;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  background-color: #666;
+  border-top: 2px solid #ccc;
 }
 
 /**
