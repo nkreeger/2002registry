@@ -8,5 +8,15 @@ describe SearchesController do
         :controller => "searches", :action => "create")
     end
   end
+
+  describe "GET show" do
+    before(:each) do
+      get :show, :id => "2364177"
+    end
+
+    it "should assing the vin number" do
+      assigns[:vin].should == 2364177.to_s
+    end
+  end
   
 end
