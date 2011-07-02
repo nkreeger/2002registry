@@ -7,5 +7,6 @@ class SearchesController < ApplicationController
   end
 
   def create
+    redirect_to(search_path(params[:term]))
   end
 end
