@@ -15,6 +15,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :cars, :only => [:new, :create, :show, :index, :edit],
                        :member => { :claim => :post }
   map.resources :locations, :only => [:lookup], :collection => { :lookup => :get }
+  map.resources :searches, :only => [:show, :create] do |search|
+    search.resources :cars, :only => [:index]
+  end
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

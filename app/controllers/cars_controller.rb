@@ -1,5 +1,4 @@
 class CarsController < ApplicationController
-
   def new
     @car = Car.new
   end
@@ -37,5 +36,4 @@ class CarsController < ApplicationController
       end
     end
   end
-
 end
