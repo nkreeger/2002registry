@@ -4,8 +4,8 @@ describe SearchesController do
 
   describe "POST create" do
     it "Should redirect to get :show" do
-      post :create, :term => "2364177"
-      response.should redirect_to(search_path("2364177"))
+      post :create, :term => "234177"
+      response.should redirect_to(search_path("234177"))
     end
   end
 
@@ -19,11 +19,14 @@ describe SearchesController do
                             :is_alive => true,
                             :location_country_code => "US",
                             :location_state => "MO")
-      get :show, :id => "2364177"
+      Car.should_receive(:find_by_vin).with(234177).and_return(car)
+
+      get :show, :id => "234177"
     end
 
     it "should assing the vin number" do
-      assigns[:vin].should == 2364177.to_s
+      assigns[:term].should == 234177.to_s
+      assigns(:car).vin.should == 234177
     end
   end
   
