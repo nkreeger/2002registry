@@ -11,7 +11,9 @@
     <li><%= link_to "Home", root_path, :class => "round" %></li>  <% end %>
     <li><%= link_to "View Cars", cars_path, :class => "round" %></li>
   </ul>
-  <ul class="account_status">
+  <ul class="stats">
+    <li>Cars: <%= h(Car.all.length) %></li>
+    <li>Users: <%= h(User.all.length) %></li>
   </ul>
 </div>
 
