@@ -97,9 +97,9 @@ body {
 
 .field input {
   font-size: 10pt;
-  background: #FFF8C6;
+  background: #eee;
   border: 1px solid #999999;
-  padding: 3px;
+  padding: 5px;
 }
 
 /**
