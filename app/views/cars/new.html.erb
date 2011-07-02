@@ -1,4 +1,4 @@
-<div class="section">
+<div class="section newcar border">
   <h2>Register a car</h2>
   <% form_for @car, :html => { :multipart => true} do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
