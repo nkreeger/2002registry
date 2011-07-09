@@ -44,27 +44,29 @@
       </div>
     </div>
     <div class="step three hidden">
-      <h3>Car Location</h3>
-      <!-- Location settings here! -->
-      <div class="field">
-        <label>Use my current location:</label>
-        <span class="location-field"></span>
-        <input type="button" value="Lookup Location" class="location-lookup-button round" />
-      </div>
-      <div class="field">
-        <label>Pick car's location:</label>
-        <select class="select-country" name="car[location_country_code]">
-          <%= render "layouts/countryoptions" %>
-        </select>
-        <select class="select-state" name="car[location_state]" disabled="true">
-          <%= render "layouts/stateoptions" %>
-        </select>
-        <!-- XXXkreeger: Fix me
-          <%= f.text_field :location_state, :size => 20, :class => "hidden state-textbox" %>
-        -->
-      </div>
-      <div class="field">
-        <input type="button" value="Continue" class="next-step-button round" />
+      <div class="inline_block left_text">
+        <h3>Car Location</h3>
+        <!-- Location settings here! -->
+        <div class="field">
+          <label>Use my current location:</label>
+          <span class="location-field"></span>
+          <input type="button" value="Lookup Location" class="location-lookup-button round" />
+        </div>
+        <div class="field">
+          <label>Pick car's location:</label>
+          <select class="select-country" name="car[location_country_code]">
+            <%= render "layouts/countryoptions" %>
+          </select>
+          <select class="select-state" name="car[location_state]" disabled="true">
+            <%= render "layouts/stateoptions" %>
+          </select>
+          <!-- XXXkreeger: Fix me
+            <%= f.text_field :location_state, :size => 20, :class => "hidden state-textbox" %>
+          -->
+        </div>
+        <div class="field">
+          <input type="button" value="Continue" class="next-step-button round" />
+        </div>
       </div>
     </div>
     <div class="step four hidden">
