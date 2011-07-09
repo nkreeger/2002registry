@@ -102,4 +102,10 @@ describe CarsController do
     end
   end
 
+  describe "DELETE destroy" do
+    it "should delete a car when prompted" do
+      delete :destroy
+    end
+  end
+
 end

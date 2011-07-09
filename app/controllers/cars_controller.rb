@@ -22,6 +22,9 @@ class CarsController < ApplicationController
     @cars = Car.all
   end
 
+  def destroy
+  end
+
   def claim
     car = Car.find(params[:id])
     if car.nil?
