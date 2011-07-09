@@ -23,6 +23,11 @@ class CarsController < ApplicationController
   end
 
   def destroy
+    car = Car.find(params[:id])
+    if !car.nil?
+      car.delete
+    end
+    redirect_to user_path(current_user) 
   end
 
   def claim

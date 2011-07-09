@@ -104,7 +104,17 @@ describe CarsController do
 
   describe "DELETE destroy" do
     it "should delete a car when prompted" do
-      delete :destroy
+      car = mock_model(Car, :id => 1,
+                            :user_id => 1,
+                            :vin => 234177,
+                            :claimed_year => 1975,
+                            :color => "Polaris",
+                            :is_alive => true,
+                            :location_country_code => "US",
+                            :location_state => "MO")
+      Car.should_receive(:find).with("1").and_return(car)
+      car.should_receive(:delete).and_return(true)
+      delete :destroy, :id => "1"
     end
   end
 
