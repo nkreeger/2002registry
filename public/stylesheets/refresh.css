@@ -161,6 +161,19 @@ body {
   display: none;
 }
 
+.left_text {
+  text-align: left;
+}
+
+.inline_block {
+  display: inline-block;
+}
+
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .error {
   background-color: pink;
 }
@@ -311,3 +324,4 @@ body {
 
 .section.newcar .field {
 }
+
