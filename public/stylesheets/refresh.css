@@ -289,6 +289,24 @@ body {
 }
 
 /**
+ * Cars show
+ */
+.section.carshow {
+  display: inline-block;
+}
+
+.section.carshow .image {
+  float: left;
+  display: inline-block;
+}
+
+.section.carshow .description {
+  float: right;
+  padding: 10px 20px;
+}
+
+
+/**
  * Cars index
  */
 .section.carsindex .car {

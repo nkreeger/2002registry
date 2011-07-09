@@ -1,15 +1,20 @@
-<div class="section">
-  <h2>Car: <%= h(@car.vin) %></h2>
-  <div class="details clearfix">
-    <%= image_tag @car.image.url(:larger), :class => "image" %>
-    <ul>
-      <li>Year: <%= h(@car.claimed_year) %></li>
-      <li>Color: <%= h(@car.color) %></li>
-      <li>Model: <%= h(@car.model.name) %></li>
-      <li>Country: <%= h(@car.location_country_code) %></li>
-      <li>State: <%= h(@car.location_state) %></li>
-      <li><%= link_to "Change", edit_car_path %></li>
-      <li><%= link_to "Delete", car_path, :method => :delete %></li>
-    </ul>
+<div class="section carshow">
+  <div class="details border">
+    <div class="image">
+      <%= image_tag @car.image.url(:larger), :class => "image" %>
+    </div>
+    <div class="description">
+      <h2>Car: <%= h(@car.vin) %></h2>
+      <ul>
+        <li>Year: <%= h(@car.claimed_year) %></li>
+        <li>Color: <%= h(@car.color) %></li>
+        <li>Model: <%= h(@car.model.name) %></li>
+        <li>Country: <%= h(@car.location_country_code) %></li>
+        <li>State: <%= h(@car.location_state) %></li>
+        <li><%= link_to "Change", edit_car_path %></li>
+        <li><%= link_to "Delete", car_path, :method => :delete %></li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
   </div>
 </div>
