@@ -334,6 +334,18 @@ body {
   padding: 10px 20px;
 }
 
+.section.carshow .hidden_delete_link {
+  display: none;
+}
+
+.section.deletecar .field {
+  display: inline-block;
+}
+
+.section.deletecar .field + .field {
+  padding: 5px;
+}
+
 
 /**
  * Cars index

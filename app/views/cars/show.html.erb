@@ -12,7 +12,10 @@
         <li>Country: <%= h(@car.location_country_code) %></li>
         <li>State: <%= h(@car.location_state) %></li>
         <li><%= link_to "Change", edit_car_path %></li>
-        <li><%= link_to "Delete", car_path, :method => :delete, :class => "delete_car" %></li>
+        <li>
+          <a href="#" class="delete_car">Delete</a>
+          <%= link_to "Delete", car_path, :method => :delete, :class => "hidden_delete_link" %>
+        </li>
       </ul>
     </div>
     <div class="clearfix"></div>
@@ -21,7 +24,29 @@
 <script type="text/javascript">
   $(function() {
     $(".delete_car").click(function() {
-      return;
+      var html =
+        "<div class=\"section deletecar\">" +
+          "<h2>Confirm delete car</h2>" +
+          "<p>" +
+            "Are you sure you want to delete this car?" +
+          "</p>" +
+          "<div class=\"field\">" +
+            "<input class=\"ok\" type=\"button\" value=\"Yes\" />" +
+          "</div>" +
+          "<div class=\"field\">" +
+            "<input class=\"cancel\" type=\"button\" value=\"No\" />" +
+          "</div>" +
+        "</div>";
+
+        var dialogBox = new DialogBox(html);
+        dialogBox.show();
+        $("input.ok").click(function() {
+          dialogBox.close();
+          $(".hidden_delete_link").click();
+        });
+        $("input.cancel").click(function() {
+          dialogBox.close();
+        });
     });
   });
 </script>
