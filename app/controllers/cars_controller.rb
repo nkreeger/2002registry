@@ -24,8 +24,12 @@ class CarsController < ApplicationController
 
   def destroy
     car = Car.find(params[:id])
-    if !car.nil?
+    if car.nil?
+      flash[:notice] = "Could not delete the car from the registry. Please try again"
+    else
       car.delete
+      flash[:notice] = "'#{car.vin}' a #{car.claimed_year} #{car.model.name} " +
+                       "has been deleted from the registry."
     end
     redirect_to user_path(current_user) 
   end

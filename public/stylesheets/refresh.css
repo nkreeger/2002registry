@@ -103,6 +103,35 @@ body {
 }
 
 /**
+ * Flash bar
+ */
+.flash {
+  margin: 0px 0px 10px 0px;
+  padding: 5px;
+}
+
+.flash.notice {
+  background-color: #ccffbb;
+  border: 1px solid green;
+}
+
+.flash.error {
+  background-color: pink;
+  border: 1px solid red;
+}
+
+.button.close {
+  float: right;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.button.close:hover {
+  color: red;
+}
+
+
+/**
  * Dialog
  */
 
