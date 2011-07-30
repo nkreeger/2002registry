@@ -126,6 +126,13 @@ $(function() {
     $(this).nextStep();
   });
 
+  $(".vin-textbox").keydown(function(arg) {
+    // Keycode '13' is the enter key.
+    if (arg.keyCode == 13) {
+      $(this).nextStep();
+    }
+  });
+
   $(".guess-year-button").click(function() {
     $.get("/vins/" + $(".vin-textbox").val() + "/guess_year", function(data) {
       if (data["success"]) {
