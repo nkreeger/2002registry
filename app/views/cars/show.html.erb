@@ -11,11 +11,13 @@
         <li>Model: <%= h(@car.model.name) %></li>
         <li>Country: <%= h(@car.location_country_code) %></li>
         <li>State: <%= h(@car.location_state) %></li>
+        <% if signed_in? %>
         <li><%= link_to "Change", edit_car_path %></li>
         <li>
           <a href="#" class="delete_car">Delete</a>
           <%= link_to "Delete", car_path, :method => :delete, :class => "hidden_delete_link" %>
         </li>
+        <% end %>
       </ul>
     </div>
     <div class="clearfix"></div>
