@@ -16,15 +16,23 @@
     </div>
   </div>
   <div class="section cars border">
-    <h2>Your Registered Cars:</h2>
+    <h2>Your Registered Cars: <%= link_to "Register Car", new_car_path, :class => "round" %></h2>
+    <% if @user.cars.empty? %>
+      <div class="car">
+        <span class="info">You haven't registered any cars yet.</span>
+        <div class="clearfix"></div>
+      </div>
+    <% end %>
     <% @user.cars.each do |car| %>
       <div class="car">
-        <span class="image"><%= link_to(image_tag(car.image.url(:thumb)), car_path(car)) %></span>
-        <span class="vin"><%= link_to(car.vin, car_path(car)) %></span>
-        <span class="year"><%= h(car.claimed_year) %></span> - 
-        <span class="model"><%= h(car.model.name) %></span>
-        <span class="color"><%= h(car.color) %></span>
-        <div class="clearfix"></div>
+        <div class="content">
+          <span class="image"><%= link_to(image_tag(car.image.url(:thumb)), car_path(car)) %></span>
+          <span class="vin"><%= link_to(car.vin, car_path(car)) %></span>
+          <span class="year"><%= h(car.claimed_year) %></span> - 
+          <span class="model"><%= h(car.model.name) %></span>
+          <span class="color"><%= h(car.color) %></span>
+          <div class="clearfix"></div>
+        </div>
       </div>
     <% end %>
   </div>

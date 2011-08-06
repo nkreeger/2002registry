@@ -33,6 +33,7 @@ body {
 
 #navbar ul.stats {
   float: right;
+  color: #aaa;
 }
 
 #navbar ul {
@@ -80,6 +81,7 @@ body {
 #content .section h2 {
   font-size: 12pt;
   font-weight: bold;
+  padding-bottom: 5px;
 }
 
 /**
@@ -106,7 +108,7 @@ body {
  * Flash bar
  */
 .flash {
-  margin: 0px 0px 10px 0px;
+  margin: 0px 41px 6px 41px;
   padding: 5px;
 }
 
@@ -227,12 +229,12 @@ body {
 
 .section.user {
   float: left;
-  width: 300px;
+  width: 250px;
 }
 
 .section.cars {
   float: right;
-  width: 300px;
+  width: 390px;
 }
 
 .user .image {
@@ -293,6 +295,20 @@ body {
 
 .car + .car {
   border-top: 1px dashed #ddd;
+}
+
+.car .content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 270px;
+}
+
+.car .info {
+  font-style: italic;
+  font-size: 9pt;
+  display: block;
+  color: #666;
+  text-align: center;
 }
 
 .car .image {
