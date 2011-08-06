@@ -3,11 +3,11 @@
   <% form_for(@car) do |f| %>
     <div class="field">
       <label>Model Name:</label>
-      <span class="model-name-entry hard-value"></span>
+      <span class="model-name-entry hard-value"><%= h @car.model.name %></span>
     </div>
     <div class="field">
       <label>Model Number:</label>
-      <span class="model-number-entry hard-value"></span>
+      <span class="model-number-entry hard-value"><%= h @car.model.number %></span>
     </div>
     <div class="field">
       <label>Year</label>
