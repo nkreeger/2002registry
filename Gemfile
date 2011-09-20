@@ -7,6 +7,7 @@ gem "libxml-ruby", "1.1.3"
 gem "httpclient", "2.1.5.2"
 gem "geokit", "1.5.0"
 gem "paperclip", "2.3.1.1"
+gem "test-unit", "2.4.0"
 #gem "heroku", "2.2.4"
 
 group :test do
