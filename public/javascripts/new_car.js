@@ -160,7 +160,6 @@ $(function() {
 
   $(".location-lookup-button").click(function() {
     $.get("/locations/lookup", function(data) {
-      console.log(data);
     });
   });
 });
