@@ -23,8 +23,9 @@
         <div class="clearfix"></div>
       </div>
     <% end %>
+    <ul>
     <% @user.cars.each do |car| %>
-      <div class="car">
+      <li class="car">
         <div class="content">
           <span class="image"><%= link_to(image_tag(car.image.url(:thumb)), car_path(car)) %></span>
           <span class="vin"><%= link_to(car.vin, car_path(car)) %></span>
@@ -33,8 +34,9 @@
           <span class="color"><%= h(car.color) %></span>
           <div class="clearfix"></div>
         </div>
-      </div>
+      </li>
     <% end %>
+    </ul>
   </div>
   <div class="clearfix"></div>
 </div>

@@ -58,8 +58,6 @@ body {
 
 #container #content {
   padding: 10px 0;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /**
@@ -78,7 +76,11 @@ body {
  * Section
  */
 #content .section {
-  padding: 5px 0;
+  padding: 10px;
+}
+
+.section + .section {
+  margin-top: 10px;
 }
 
 #content .section h2 {
@@ -231,13 +233,9 @@ body {
 }
 
 .section.user {
-  float: left;
-  width: 250px;
 }
 
 .section.cars {
-  float: right;
-  width: 390px;
 }
 
 .user .image {
@@ -301,8 +299,7 @@ body {
 }
 
 .car .content {
-  margin-left: auto;
-  margin-right: auto;
+  display: inline-block;
   width: 270px;
 }
 
