@@ -6,6 +6,8 @@
 //==================================================================================================
 
 $(function() {
+
+
   // Clear out form values each time
   $(':input', '#new_car').not(":button, :submit, :reset, :hidden")
                          .val('')
@@ -14,8 +16,79 @@ $(function() {
     // Determine what step to do next.
     var curStep = $(".current-step").attr("rel");
     switch (curStep) {
-      case "1":      
+      case "1":
+        //
         // XXX Do something load-ey.
+        //
+        var vin = $(".vin-textbox").val(); 
+        var car = new Registry.Car(vin, function(success) {
+          if (success) {
+            if (car.is_registered) {
+              var curUserId = parseInt($(".user-id-field").val());
+              if (car.registered_userid == curUserId) {
+                var html =
+                    "<div class=\"section\">" +
+                      "<h2>This VIN is already registered</h2" +
+                      "<p>" +
+                        "You have already registered this car." +
+                      "</p>" +
+                      "<div class=\"field\">" +
+                        "<input class=\"ok\" type=\"button\" value=\"OK\" />" +
+                      "</div>" +
+                    "</div>";
+                var dialogBox = new DialogBox(html);
+                dialogBox.show();
+                $("input.ok").click(function() { dialogBox.close(); });
+              }
+              else {
+                /* XXX KREEGER: Left off right here --> Need to figure out how we want to do the
+                                JSON part of this - might just be easy enough to throw the 'user'
+                                property on the JSON response.
+
+                var userName = data["user"]["name"];
+                var carID = data["car"]["id"];
+                var html =
+                  "<div class=\"section\">" +
+                    "<h2>This VIN is already registered</h2" +
+                    "<p>" +
+                      "This car has already been registered by " + userName + ". " +
+                      "To claim this car, please click on the 'Claim Car' button below" +
+                      "<div class=\"field\">" +
+                        "<input class=\"cancel\" type=\"button\" value=\"Cancel\" />" +
+                        "&nbsp;" +
+                        "<input class=\"claim\" type=\"button\" value=\"Claim Car\" />" +
+                      "</div>" +
+                    "</p>" +
+                  "</div>";
+                var dialogBox = new DialogBox(html);
+                dialogBox.show();
+                $("input.cancel").click(function() {
+                  dialogBox.close();
+                });
+                $("input.claim").click(function() {
+                  $.post("/cars/" + carID + "/claim",
+                         "user_id=" + $(".user-id-field").val(),
+                         function(data) {
+                           if (data["success"]) {
+                             // Probably want to take to the 'edit car' path
+                             // when that page has been completed.
+                             // XXX KREEGER: FIX ME!
+                             //window.location = "<%= user_path(current_user) %>";
+                           }
+                           else {
+                             alert("Sorry, something went wrong, please try again");
+                           }
+                         });
+                  dialogBox.close();
+                });
+                */
+              }
+            }
+          }
+          else {
+          }
+        });
+
         $.get("/vins/" + $(".vin-textbox").val(), function(data) {
           if (data["success"]) {
             if (data["is_registered"]) {
@@ -101,7 +174,7 @@ $(function() {
         break;
 
       case "2":
-        // Validate form data?
+        // Ensure that data is validated..
         $(".step.two").addClass("hidden");
         $(".step.three").removeClass("hidden");
         $(".current-step").attr("rel", "3");
@@ -120,6 +193,9 @@ $(function() {
       default:
         alert("Something went wrong!");
     }
+  },
+
+  $.fn.validateLocation = function() {
   },
 
   $(".next-step-button").click(function() {
