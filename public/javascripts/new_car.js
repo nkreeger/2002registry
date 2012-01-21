@@ -25,7 +25,7 @@ $(function() {
           if (success) {
             if (car.is_registered) {
               var curUserId = parseInt($(".user-id-field").val());
-              if (car.registered_userid == curUserId) {
+              if (car.registered_user.id == curUserId) {
                 var html =
                     "<div class=\"section\">" +
                       "<h2>This VIN is already registered</h2" +
@@ -38,9 +38,42 @@ $(function() {
                     "</div>";
                 var dialogBox = new DialogBox(html);
                 dialogBox.show();
-                $("input.ok").click(function() { dialogBox.close(); });
+                $("input.ok").click(function() {
+                  dialogBox.close();
+                });
               }
               else {
+                var html =
+                  "<div class=\"section\">" +
+                    "<h2>This VIN is already registered</h2" +
+                    "<p>" +
+                      "This car has already been registered by " + car.registered_user.name + ". " +
+                      "To claim this car, please click on the 'Claim Car' button below" +
+                      "<div class=\"field\">" +
+                        "<input class=\"cancel\" type=\"button\" value=\"Cancel\" />" +
+                        "&nbsp;" +
+                        "<input class=\"claim\" type=\"button\" value=\"Claim Car\" />" +
+                      "</div>" +
+                    "</p>" +
+                  "</div>";
+                var dialogBox = new DialogBox(html);
+                dialogBox.show();
+                $("input.cancel").click(function() {
+                  dialogBox.close();
+                });
+                $("input.claim").click(function() {
+                  dialogBox.close();
+                  var userId = $(".user-id-field").val();
+                  car.claimCar(vin, userId, function(success) {
+                    if (success) {
+                      window.location = "<%= user_path(current_user) %>";
+                    }
+                    else {
+                      alert("Sorry, something went wrong. Please try again.");
+                    }
+                  });
+                });
+
                 /* XXX KREEGER: Left off right here --> Need to figure out how we want to do the
                                 JSON part of this - might just be easy enough to throw the 'user'
                                 property on the JSON response.
