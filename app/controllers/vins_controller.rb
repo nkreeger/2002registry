@@ -11,7 +11,10 @@ class VinsController < ApplicationController
         :result => model,
       }
       if response[:is_registered]
-        response[:registered_userid] = registered_car.user.id
+        response[:registered_user] = {
+          :id => registered_car.user.id,
+          :name => registered_car.user.name
+        }
       end
       render :json => response 
     end
